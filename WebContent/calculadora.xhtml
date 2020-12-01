@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Calculadora</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:dialog header="Calculadora" modal="true" visible="true">
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Valor1:" />
+				<p:inputNumber value="#{CalculadoraBean.valor1}"/>
+				<p:outputLabel value="Valor2:" />
+				<p:inputNumber value="#{CalculadoraBean.valor2}"/>
+				<p:outputLabel value="Resultado:" />
+				<p:inputNumber value="#{CalculadoraBean.resultado}"/>
+				<p:commandButton value="SOMAR" update="@form" 
+					actionListener="#{CalculadoraBean.somar}"/>
+			</p:panelGrid>
+		</p:dialog>
+	</h:form>
+</h:body>
+</html>
