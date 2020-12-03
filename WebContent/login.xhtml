@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+
+<h:body>
+	<p:dialog header="Login Home Care" visible="true" modal="true" width="500px" height="400px">
+		<div class="box-parent-login" align="center"
+			style="width: 400px; height: 100px;">
+			<div class="well bg-white box-login">
+				<h1 class="ls-login-logo">Home Care</h1>
+				<h:form role="form">
+					<fieldset>
+						<div class="form-group ls-login-user">
+							<p:panelGrid columns="2">
+								<p:outputLabel value="Usuário" />
+								<p:inputNumber value="#{LoginBean.usuario}" />
+							</p:panelGrid>
+						</div>
+
+						<div class="form-group ls-login-password">
+							<p:panelGrid columns="2">
+								<p:outputLabel value="Senha" />
+								<p:inputNumber value="#{LoginBean.senha}" />
+							</p:panelGrid>
+						</div>
+
+						<a href="#" class="ls-login-forgot">Esqueci minha senha</a> <input
+							type="submit" value="Entrar"
+							class="btn btn-primary btn-lg btn-block" />
+						<p class="txt-center ls-login-signup">Não possui um usuário na
+							Home Care?
+						<p>
+							<a href="#">Cadastre-se agora</a>
+						</p>
+						</p>
+
+					</fieldset>
+				</h:form>
+			</div>
+		</div>
+	</p:dialog>
+</h:body>
+</html>
