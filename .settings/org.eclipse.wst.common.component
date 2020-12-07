@@ -2,8 +2,8 @@
     <wb-module deploy-name="CoronaTecHomeCare">
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
-        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/" source-path="/WebContent"/>
+        <wb-resource deploy-path="/" source-path="/src/main/resources"/>
         <property name="context-root" value="CoronaTecHomeCare"/>
         <property name="java-output-path" value="/CoronaTecHomeCare/target/classes"/>
     </wb-module>
