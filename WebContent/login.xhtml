@@ -1,0 +1,57 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<script type="text/javascript">
+		function handleLoginRequest(xhr, status, args) {
+			if (args.validationFailed || !args.loggedIn) {
+				PF('dlg').jq.effect("shake", {
+					times : 5
+				}, 100);
+			} else {
+				PF('dlg').hide();
+				$('#loginLink').fadeOut();
+			}
+		}
+	</script>
+</h:head>
+
+<h:body style="text-align: center;">
+ <!-- pesquisar growl -->    
+    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+    
+	<p:dialog header="Login Home Care" visible="true" modal="true"
+		width="350px" height="250px">
+
+
+		<h:form role="form">
+			<p:panelGrid columns="2" style="border:0px;">
+
+				<p:outputLabel value="Usuário:" />
+				<p:inputText value="#{LoginBean.cpfTela}" required="true"
+					label="usuario" />
+
+				<p:outputLabel value="Senha:" />
+				<p:password value="#{LoginBean.senhaTela}" required="true"
+					label="senha" />
+
+			</p:panelGrid>
+			<p>
+				<p:commandButton value="Entrar" update="growl" action="#{LoginBean.logar}"  oncomplete="handleLoginRequest(xhr, status, args)" />
+			</p>
+			<p>
+				<a href="#">Esqueci minha senha</a>
+			</p>
+
+			<p>
+				<a href="#">Cadastre-se agora</a>
+			</p>
+
+		</h:form>
+
+	</p:dialog>
+</h:body>
+</html>
