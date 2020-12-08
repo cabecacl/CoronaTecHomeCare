@@ -12,86 +12,60 @@
 	<ui:composition template="/templatePrincipal.xhtml">
 		<ui:define name="conteudo">
 			<div style="background-color: #b4bfd9; width: 100%;">
-				<div style="padding: 32px 64px">
-					<p:panel id="pnlAtendimento" header="Atendimento"  style="text-align: center;" width="80%">
+				<div style="padding: 32px 128px">
+					<p:panel id="pnlAtendimento" header="Atendimento"  style="text-align: center;">
 						<!-- Uso de classes PRIME FLEX -->
 						<table width="100%" style="font-size: 18px; font-family: roboto, arial;">
 							<tr>
 								<td width="50%" style="vertical-align: top; padding-top: 32px;">
-									<div class="ui-fluid">
 									
-										<div class="p-field" style="padding-left: 8px">
-										
 <!-- PENDÊNCIA: vincular campo com dados do profissional -->
-											<p:outputLabel id="lblNomeProf" value="nome: "     /><br/>
-											
-											<!-- Colocar o atributo do obj criado no ManagedBean. Ainda não existe -->
-											<p:outputLabel id="lblRegProf"  value="registro: " /><br/>
-											
-											<!-- Colocar o atributo do obj criado no ManagedBean. Ainda não existe -->
-											<p:outputLabel id="lblTipoProf"  value="Especialização: " /><br/>
-											<div class="ui-g">
-												<div class="ui-g-7" style="margin: 0px; padding: 0px;">
-													<div class="ui-fuild">
-														<div class="p-field">
-															<p:outputLabel id="lblDtAtendimento" for="cldData"  value="data: "/><br/>
-															<p:calendar id="cldData" value="#{AtendimentoBean.data}" showOn="button" showTime="true" pattern="dd/MM/yyyy HH:mm"></p:calendar>
-															<p:outputLabel   id="lblCidAtendimento" for="txtCidAtendimento" value="cid:  "/><br/>
-														 	<p:inputText id="txtCidAtendimento" value="#{AtendimentoBean.cid}"/>
-														</div>
-													</div>
-												</div>
-											</div>
+									<p:outputLabel id="lblNomeProf" value="Nome: "     /><br/>
+									
+									<!-- Colocar o atributo do obj criado no ManagedBean. Ainda não existe -->
+									<p:outputLabel id="lblRegProf"  value="Registro: " /><br/>
+									
+									<!-- Colocar o atributo do obj criado no ManagedBean. Ainda não existe -->
+									<p:outputLabel id="lblTipoProf"  value="Especialização: " />
+									<div class="ui-g" style="margin-top: 64px;">
+										<div class="ui-g-2" style="padding-left: 0px; ">
+											<p:outputLabel id="lblDtAtendimento" for="cldData"  value="Data: "/>
+											<p:outputLabel   id="lblCidAtendimento" for="txtCidAtendimento" value="Cid:  "/>
 										</div>
+										<div class="ui-g-9" style="padding: 0px;">
+											<p:calendar id="cldData" value="#{AtendimentoBean.data}" showOn="button" showTime="true" pattern="dd/MM/yyyy HH:mm"></p:calendar><br/>
+								 			<p:inputText id="txtCidAtendimento" value="#{AtendimentoBean.cid}"/>
+										</div>										
 									</div>
 								</td>
 								<td width="auto" style="padding: 32px 0px 0px 0px; margin: 0px; vertical-align: top;">
-										<div class="ui-fluid">
-											<div class="p-field" style="padding-left: 8px;">
-												<div class="ui-g">
-													<div class="ui-g-7" style="margin: 0px; padding: 0px;">
-														<div class="ui-fuild">
-															<div class="p-field">
-																<p:outputLabel id="lblCpfPac" for="txtCpfPac" value="cpf" />
-																<p:inputText id="txtCpfPac" value="" />
-															</div>
-														</div>
-													</div>
-												</div>
-												
+									<p:outputLabel id="lblCpfPac" for="txtCpfPac" value="CPF:" />
+									<p:inputText id="txtCpfPac" value=""/><br/>
 <!-- PENDÊNCIA: vincular campo com dados do paciente através do CPF -->
-												<p:outputLabel id="lblNomePac"   value="nome:" /><br/>
-												<p:outputLabel id="lblPesoPac"   value="peso:" /><br/>
-												<p:outputLabel id="lblAlturaPac" value="altura:" />
-											</div>
-										</div>
+												<p:outputLabel id="lblNomePac"   value="Nome:" /><br/>
+												<p:outputLabel id="lblPesoPac"   value="Peso:" /><br/>
+												<p:outputLabel id="lblAlturaPac" value="Altura:" />
 								</td>
 							</tr>
 							<tr>
-								<td colspan="2">
-									<div class="ui-g">
-										<div class="ui-g-12">
-											<div class="ui-fluid">
-												<div class="p-field">
-													<p:outputLabel id="lblAvalAtendimento" for="txtAvalAtendimento" value="avaliação"/><br/>
-													<p:inputTextarea rows="6" maxlength="3000" id="txtAvalAtendimento" value="#{AtendimentoBean.avaliacao}"/><br/>
-													
-													<p:outputLabel   id="lblEvolAtendimento" for="txtEvolAtendimento" value="evolução"/><br/>
-													<p:inputTextarea rows="6" maxlength="3000" id="txtEvolAtendimento" value="#{AtendimentoBean.evolucao}"/><br/>
-													
-													<p:outputLabel   id="lblPrescAtendimento" for="txtPrescAtendimento" value="prescrição"/><br/>
-													<p:inputTextarea rows="6" maxlength="3000" id="txtPrescAtendimento" value="#{AtendimentoBean.prescricao}"/><br/>
-													
-													<p:outputLabel   id="lblObsAtendimento" for="txtObsAtendimento" value="observação"/><br/>
-													<p:inputTextarea rows="6" maxlength="3000" id="txtObsAtendimento" value="#{AtendimentoBean.obs}"/><br/>
-													
-													<p:outputLabel   id="lblCondutaAtendimento" for="txtCondutaAtendimento" value="conduta"/><br/>
-													<p:inputTextarea rows="6" maxlength="3000" id="txtCondutaAtendimento" value="#{AtendimentoBean.conduta}"/>
-												</div>
-											</div>		
+									<td colspan="2">
+										<div style="margin-top: 64px;">
+											<p:outputLabel id="lblAvalAtendimento" for="txtAvalAtendimento" value="avaliação"/><br/>
+											<p:inputTextarea rows="6" maxlength="3000" cols="100" id="txtAvalAtendimento" value="#{AtendimentoBean.avaliacao}"/><br/>
+											
+											<p:outputLabel   id="lblEvolAtendimento" for="txtEvolAtendimento" value="evolução"/><br/>
+											<p:inputTextarea rows="6" maxlength="3000" cols="100" id="txtEvolAtendimento" value="#{AtendimentoBean.evolucao}"/><br/>
+											
+											<p:outputLabel   id="lblPrescAtendimento" for="txtPrescAtendimento" value="prescrição"/><br/>
+											<p:inputTextarea rows="6" maxlength="3000" cols="100" id="txtPrescAtendimento" value="#{AtendimentoBean.prescricao}"/><br/>
+											
+											<p:outputLabel   id="lblObsAtendimento" for="txtObsAtendimento" value="observação"/><br/>
+											<p:inputTextarea rows="6" maxlength="3000" cols="100" id="txtObsAtendimento" value="#{AtendimentoBean.obs}"/><br/>
+											
+											<p:outputLabel   id="lblCondutaAtendimento" for="txtCondutaAtendimento" value="conduta"/><br/>
+											<p:inputTextarea rows="6" maxlength="3000" cols="100" id="txtCondutaAtendimento" value="#{AtendimentoBean.conduta}"/>
 										</div>
-									</div>
-								</td>
+									</td>
 							</tr>
 							<tfoot>
 								<tr>
