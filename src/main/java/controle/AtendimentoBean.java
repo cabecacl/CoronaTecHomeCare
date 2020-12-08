@@ -14,15 +14,6 @@ import entidade.Profissional;
 @RequestScoped
 public class AtendimentoBean {
 	
-	private Long 	id;
-	private Date	data = new Date();
-	private String	cid;
-	private String 	avaliacao;
-	private String	evolucao;
-	private String 	prescricao;
-	private String 	obs;
-	private String 	conduta;
-	
 	private Profissional profissional;
 	private Paciente     paciente;
 	private Processo	 processo;
@@ -33,73 +24,13 @@ public class AtendimentoBean {
 	public AtendimentoBean() {
 		this.atendimento = new Atendimento();
 		this.atendimento.setDta(new Date());
+		
+		this.profissional = new Profissional();		
+		this.processo     = new Processo();
+		this.paciente 	  = new Paciente();
 	}
 	
 	//GETTERS & SETTERS
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
-	}
-
-	public String getCid() {
-		return cid;
-	}
-
-	public void setCid(String cid) {
-		this.cid = cid;
-	}
-
-	public String getAvaliacao() {
-		return avaliacao;
-	}
-
-	public void setAvaliacao(String avaliacao) {
-		this.avaliacao = avaliacao;
-	}
-
-	public String getEvolucao() {
-		return evolucao;
-	}
-
-	public void setEvolucao(String evolucao) {
-		this.evolucao = evolucao;
-	}
-
-	public String getPrescricao() {
-		return prescricao;
-	}
-
-	public void setPrescricao(String prescricao) {
-		this.prescricao = prescricao;
-	}
-
-	public String getObs() {
-		return obs;
-	}
-
-	public void setObs(String obs) {
-		this.obs = obs;
-	}
-
-	public String getConduta() {
-		return conduta;
-	}
-
-	public void setConduta(String conduta) {
-		this.conduta = conduta;
-	}
-
 	public Profissional getProfissional() {
 		return profissional;
 	}
