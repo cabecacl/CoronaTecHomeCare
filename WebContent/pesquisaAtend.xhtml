@@ -1,0 +1,119 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+<h:head>
+	<title>Projeto Home Care</title>
+</h:head>
+<h:body>
+
+  <style type="text/css">
+    /** Demo **/
+    .ui-outputlabel {
+        font-weight: bold;
+    }
+ 
+    .ui-orderlist .ui-orderlist-list {
+        height: auto;
+    }
+
+</style>
+
+<h:form>
+<div class="ui-fluid">
+
+	<table border="" style="width: 100%; height: 100px;"   >
+		<tr>
+			<td colspan="2">
+				<ui:insert name="cabecalho">
+					<h1 style="text-align:center; ">Projeto Home Care</h1>
+				</ui:insert>
+			</td>
+		</tr>
+		<tr>
+			<td width="20%">
+				<ui:insert name="menu">
+			     
+			   <p:menu>
+				 <p:submenu label="Menu">
+				 
+				 <p:menuitem value=" Tela inicial" url="telaPrincipal.xhtml"/>
+				 <p:menuitem value=" Atendimento"  url="telaAtendimento.xhtml"/>
+				 <p:menuitem value="Pesquisa Paciente" />    
+				 <p:menuitem value="Cadastra paciente"/>
+				  <p:menuitem value="Calculadora" url="calculadora.xhtml"/>
+ 				
+ 				</p:submenu>
+ 				<p:submenu label="Sistema">
+				 <p:menuitem value="Save"/>
+				 <p:menuitem value="Logout"/>
+ 				
+ 				</p:submenu>
+    			</p:menu>
+			     		     
+			    </ui:insert>
+			</td>
+			
+			<td>	
+				<p:panelGrid columns="4" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4,ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" >
+
+				<p:outputLabel value="Profissional:" style="margin-left:90px; font-size:23px"/>
+				<p:autoComplete  dropdown="true"  value="#{CadastroBean.nomeTela}" completeMethod="#{autoCompleteView.completeText}" /> 
+				
+				<p:outputLabel value="Paciente:" style="margin-left:90px; font-size:23px" />
+				<p:autoComplete  dropdown="true"  value="#{Atendimento.paciente}" completeMethod="#{autoCompleteView.completeText}"/>
+				
+				<p:outputLabel value="Data:" style="margin-left:90px; font-size:23px" />
+				<p:datePicker  showIcon="true" />				
+				
+				<p:outputLabel value="Data fim:" style="margin-left:90px; font-size:23px" />
+				<p:datePicker  showIcon="true" />	
+				
+				<p:outputLabel value="Processo:" style="margin-left:90px; font-size:23px" />
+				<p:autoComplete  dropdown="true"  value="#{AtendimentoBean.cid}" completeMethod="#{autoCompleteView.completeText}"/>
+				
+				<p:outputLabel value="CID:" style="margin-left:90px; font-size:23px"/>
+				<p:inputText/>
+				</p:panelGrid>
+				
+				
+				 <p:commandButton value="PESQUISAR"  style="margin-left:100px; width:200px; margin-top:30px;" />
+
+			</td>
+		</tr>
+	</table>
+	
+	<p:dataTable var="car" value="#{dtBasicView.cars}" style="margin-top: 20px;">
+	
+	<h2> Resulta </h2>
+      
+     
+    <p:column headerText="Id">
+        <h:outputText value="#{car.id}" />
+    </p:column>
+ 
+    <p:column headerText="Pciente">
+        <h:outputText value="#{car.year}" />
+    </p:column>
+ 
+    <p:column headerText="CID">
+        <h:outputText value="#{car.brand}" />
+    </p:column>
+ 
+    <p:column headerText="Profissional">
+        <h:outputText value="#{car.color}" />
+    </p:column>
+    <p:column headerText="Processo">
+        <h:outputText value="#{car.color}" />
+    </p:column>
+    <p:column headerText="Data">
+        <h:outputText value="#{car.color}" />
+    </p:column>
+</p:dataTable>
+	
+	
+	</div>
+</h:form>
+</h:body>
+</html>
