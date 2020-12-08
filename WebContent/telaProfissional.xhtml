@@ -7,51 +7,30 @@
 <ui:composition template="/templatePrincipal.xhtml">
 
 	<ui:define name="conteudo">
-		<div class="ui-fluid">
-			<div class="p-field p-grid">
-				<p:outputLabel for="nomecompleto" styleClass="p-col-12 p-md-2"
-					value="Nome Completo" />
-				<div class="p-col-12 p-md-10">
-					<p:inputText id="nomecompleto" placeholder="Nome" />
-				</div>
-			</div>
-			<div class="p-field p-grid">
-				<p:outputLabel for="cpf" styleClass="p-col-12 p-md-2" value="CPF" />
-				<div class="p-col-12 p-md-10">
-					<p:inputText id="cpf" />
-				</div>
-			</div>
-			<div class="p-field p-grid">
-				<p:outputLabel for="email" styleClass="p-col-12 p-md-2"
-					value="Email" />
-				<div class="p-col-12 p-md-10">
-					<p:inputText id="email" />
-				</div>
-			</div>
-			<div class="p-field p-grid">
-				<p:outputLabel for="phone" value="Telefone" />
-				<p:inputMask id="phone" value="#{maskView.phone}"
-					mask="(99) 99999-9999" />
-			</div>
-			<div class="p-field p-grid">
-				<p:outputLabel value="Area" styleClass="p-col-12 p-md-2"/>
-				<p:inputTextarea rows="6" cols="33" />
-			</div>
-			<div class="p-field p-grid">
-				<p:outputLabel for="tipoprofissional" styleClass="p-col-12 p-md-2"
-					value="Tipo do Profissional" />
-				<div class="p-col-12 p-md-10">
-					<p:inputText id="tipoprofissional" />
-				</div>
-			</div>
-			<div class="p-field p-grid">
-				<p:outputLabel for="nconselho" styleClass="p-col-12 p-md-2"
-					value="Numero do Conselho" />
-				<div class="p-col-12 p-md-10">
-					<p:inputText id="nconselho" />
-				</div>
-			</div>
-		</div>
+		<p:panelGrid columns="4" style="width: 100%">
+			<p:outputLabel value="Nome" />
+			<p:inputText />
+			<p:outputLabel value="CPF" />
+			<p:inputMask id="cpf" value="#{maskView.cpf}" mask="999.999.999-99" />
+			<p:outputLabel value="Telefone" />
+			<p:inputMask id="phone" value="#{maskView.phone}"
+				mask="(99) 99999-9999" />
+			<p:outputLabel value="Área" />
+			<p:inputText />
+			<p:outputLabel value="Especialização" />
+			<p:inputText />
+			<p:outputLabel value="Nº do Conselho" />
+			<p:inputText />
+			<p:outputLabel value="Senha" />
+			<p:inputText />
+			<p:outputLabel value="Confirmar Senha" />
+			<p:inputText />
+			<p:commandButton value="Reset" type="reset" />
+			<p:commandButton value="Cadastar"  update="@form" actionListener="#{buttonView.buttonAction}" />
+		</p:panelGrid>
+		
+
+
 	</ui:define>
 </ui:composition>
 
