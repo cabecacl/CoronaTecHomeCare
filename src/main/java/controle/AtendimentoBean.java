@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import entidade.Atendimento;
 import entidade.Paciente;
 import entidade.Processo;
 import entidade.Profissional;
@@ -26,6 +27,13 @@ public class AtendimentoBean {
 	private Paciente     paciente;
 	private Processo	 processo;
 
+	private Atendimento atendimento;
+	
+	
+	public AtendimentoBean() {
+		this.atendimento = new Atendimento();
+		this.atendimento.setDta(new Date());
+	}
 	
 	//GETTERS & SETTERS
 	public Long getId() {
@@ -106,6 +114,22 @@ public class AtendimentoBean {
 
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
+	}
+
+	public Processo getProcesso() {
+		return processo;
+	}
+
+	public void setProcesso(Processo processo) {
+		this.processo = processo;
+	}
+
+	public Atendimento getAtendimento() {
+		return atendimento;
+	}
+
+	public void setAtendimento(Atendimento atendimento) {
+		this.atendimento = atendimento;
 	}
 	
 	

@@ -1,5 +1,7 @@
 package entidade;
 
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +22,7 @@ public class Atendimento {
 	private int idatendimento;
 
 	@Column(name = "DTA", nullable = false)
-	private String dta;
+	private Date dta;
 
 	@Column(name = "CID", nullable = false)
 	private String cid;
@@ -47,12 +49,10 @@ public class Atendimento {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ID_PACIENTE", referencedColumnName = "ID_PACIENTE", nullable = false)
 	private Paciente paciente;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "NOME", referencedColumnName = "NOME", nullable = false)
 	private Processo processo;
-
-	
 
 	public int getIdatendimento() {
 		return idatendimento;
@@ -60,14 +60,6 @@ public class Atendimento {
 
 	public void setIdatendimento(int idatendimento) {
 		this.idatendimento = idatendimento;
-	}
-
-	public String getDta() {
-		return dta;
-	}
-
-	public void setDta(String dta) {
-		this.dta = dta;
 	}
 
 	public String getCid() {
@@ -142,5 +134,12 @@ public class Atendimento {
 		this.processo = processo;
 	}
 
-	
+	public Date getDta() {
+		return dta;
+	}
+
+	public void setDta(Date dta) {
+		this.dta = dta;
+	}
+
 }
