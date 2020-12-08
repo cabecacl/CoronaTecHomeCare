@@ -1,0 +1,57 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/templatePrincipal.xhtml">
+	<ui:define name="conteudo">
+		<h3>
+			<p:outputLabel value="Cadastro de Paciente" />
+
+			<h:panelGrid columns="4" cellpadding="5">
+
+				<h:outputLabel for="nome" value="Nome:" />
+				<p:inputText id="nome" />
+
+				<h:outputLabel for="cpf" value="CPF:" />
+				<p:inputMask id="cpf" value="#{TelaCadastroPaciente.cpf}" mask="999.999.999-99"/>
+
+				<h:outputLabel for="email" value="Email:" />
+				<p:inputText id="email" required="true" />
+
+				<h:outputLabel for="telefone" value="Telefone:" />
+				<p:inputMask id="telefone" value="#{TelaCadastroPaciente.telefone}" mask="(999) 99999-9999"/>
+
+				<h:outputLabel for="sexo" value="Sexo:" />
+				<p:inputText id="sexo" required="true" />
+
+				<h:outputLabel for="idade" value="Idade:" />
+				<p:inputText id="idade" required="true" />
+
+				<h:outputLabel for="peso" value="Peso:" />
+				<p:inputText id="peso" required="true" />
+
+				<h:outputLabel for="altura" value="Altura:" />
+				<p:inputText id="altura" required="true" />
+
+				<h:outputLabel for="numero" value="Numero:" />
+				<p:inputText id="numero" required="true" />
+
+				<h:outputLabel for="rua" value="Rua:" />
+				<p:inputText id="rua" required="true" />
+
+				<h:outputLabel for="bairro" value="Bairro:" />
+				<p:inputText id="bairro" required="true" />
+
+				<h:outputLabel for="cep" value="CEP:" />
+				<p:inputMask id="cep" value="#{maskView.cep}" mask="99999-999"/>
+
+			</h:panelGrid>
+
+			<p:commandButton value="Cadastrar" />
+		</h3>
+	</ui:define>
+</ui:composition>
+
+</html>
