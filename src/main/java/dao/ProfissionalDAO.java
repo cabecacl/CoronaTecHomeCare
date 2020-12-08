@@ -12,7 +12,7 @@ public interface ProfissionalDAO {
 	
 	public boolean removerProfissional(Profissional profissional);
 	
-	public Profissional pesquisarProfissional(int id);
+	public Profissional pesquisarProfissional(String cpf);
 	
 	public List<Profissional> pesquisarProfissional(Profissional profissional);
 

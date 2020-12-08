@@ -12,7 +12,7 @@ public interface PacienteDAO {
 	
 	public boolean removerPaciente(Paciente paciente);
 	
-	public Paciente pesquisarPaciente(int id);
+	public Paciente pesquisarPaciente(String cpf);
 	
 	public List<Paciente> pesquisarPaciente(Paciente paciente);
 

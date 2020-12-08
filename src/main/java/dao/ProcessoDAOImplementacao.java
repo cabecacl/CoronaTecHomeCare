@@ -28,20 +28,62 @@ public class ProcessoDAOImplementacao implements ProcessoDAO {
 
 	@Override
 	public boolean alterarProcesso(Processo processo) {
+		EntityManager ent = JpaUtil.getEntityManager();
+		EntityTransaction tx = ent.getTransaction();
 		
-		return false;
+		tx.begin();
+		
+		Processo existe = ent.find(Processo.class, processo.getNome());
+		
+		if (existe != null) {
+			existe.setDescricao(processo.getNome());
+			
+			ent.merge(processo);
+			
+			tx.commit();
+			ent.close();
+			return true;
+		}else {
+			return false;			
+		}
+		
 	}
 
 	@Override
 	public boolean removerProcesso(Processo processo) {
+		EntityManager ent = JpaUtil.getEntityManager();
+		EntityTransaction tx = ent.getTransaction();
 		
-		return false;
+		Processo existe = ent.find(Processo.class, processo.getNome());
+		
+		tx.begin();
+		
+		if (!existe.equals("")) {
+			ent.remove(existe);
+			tx.commit();
+			ent.close();
+			return true;
+		}else {
+			return false;			
+		}
 	}
 
 	@Override
 	public Processo pesquisarProcesso(String name) {
+		EntityManager ent = JpaUtil.getEntityManager();
+		EntityTransaction tx = ent.getTransaction();
 		
-		return null;
+		Processo processo = null;
+		
+		tx.begin();
+		
+		Processo existe = ent.find(Processo.class, name);
+		
+		if (existe != null) {
+			processo = existe;
+		}
+		
+		return processo;
 	}
 
 	@Override
