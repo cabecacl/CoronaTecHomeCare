@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+
+<h:body>
+	<p:dialog header="Cadastro Home Care" visible="true" modal="true"
+		width="500px" height="600px">
+
+		<h:form role="form">
+			<p:panelGrid columns="2" cellpadding="5">
+
+				<p:outputLabel value="Nome:" />
+				<p:inputText value="#{CadastroBean.nomeTela}" required="true"
+					label="nome" />
+
+				<p:outputLabel value="CPF:" />
+				<p:inputText value="#{CadastroBean.cpfTela}" required="true"
+					label="cfp" />
+
+				<p:outputLabel value="Registro:" />
+				<p:inputText value="#{CadastroBean.numRegTela}" required="true"
+					label="registro" />
+
+				<p:outputLabel value="Profição:" />
+				<p:selectOneMenu value="#{CadastroBean.tipoProfTela}" dynamic="true"
+					style="width:125px">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItems value="#{CadastroBean.tipoProfTela}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Área de atuação:" />
+				<p:selectOneMenu value="#{CadastroBean.areaTela}" dynamic="true"
+					style="width:125px">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItems value="#{CadastroBean.areaTela}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Senha:" />
+				<p:inputText value="#{CadastroBean.senhaTela}" required="true"
+					label="senha" />
+				<p:outputLabel value="Confirma Senha:" />
+				<p:password value="#{CadastroBean.senhaTela}" required="true"
+					label="confirmaSenha" />
+
+				<p:outputLabel value="E-mail:" />
+				<p:inputText value="#{CadastroBean.emailTela}" required="true"
+					label="email" />
+				<p:outputLabel value="Confirma E-mail:" />
+				<p:inputText value="#{CadastroBean.emailTela}" required="true"
+					label="confirmaEmail" />
+
+				<p:outputLabel value="Telefone:" />
+				<p:inputText value="#{CadastroBean.telefoneTela}" required="true"
+					label="telefone" />
+
+
+			</p:panelGrid>
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>
