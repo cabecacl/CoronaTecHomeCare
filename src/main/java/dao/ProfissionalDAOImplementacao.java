@@ -29,19 +29,69 @@ public class ProfissionalDAOImplementacao implements ProfissionalDAO {
 	@Override
 	public boolean alterarProfissional(Profissional profissional) {
 		
-		return false;
+		EntityManager ent = JpaUtil.getEntityManager();
+		EntityTransaction tx = ent.getTransaction();
+		
+		tx.begin();
+		
+		Profissional existe = ent.find(Profissional.class, profissional.getId());
+		
+		if (existe != null) {
+			existe.setNome(profissional.getNome());
+			existe.setCpf(profissional.getCpf());
+			existe.setNumeroRegistro(profissional.getNumeroRegistro());
+			existe.setTipoProfissional(profissional.getTipoProfissional());
+			existe.setSenha(profissional.getSenha());
+			existe.setArea(profissional.getArea());
+			existe.setEmail(profissional.getEmail());
+			existe.setTelefone(profissional.getTelefone());
+			
+			ent.merge(profissional);
+			
+			tx.commit();
+			ent.close();
+			return true;
+		}else {
+			return false;			
+		}
+		
 	}
 
 	@Override
 	public boolean removerProfissional(Profissional profissional) {
+		EntityManager ent = JpaUtil.getEntityManager();
+		EntityTransaction tx = ent.getTransaction();
 		
-		return false;
+		Profissional existe = ent.find(Profissional.class, profissional.getId());
+		
+		tx.begin();
+		
+		if (existe != null) {
+			ent.remove(existe);
+			tx.commit();
+			ent.close();
+			return true;
+		}else {
+			return false;			
+		}
 	}
 
 	@Override
-	public Profissional pesquisarProfissional(int id) {
+	public Profissional pesquisarProfissional(String cpf) {
+		EntityManager ent = JpaUtil.getEntityManager();
+		EntityTransaction tx = ent.getTransaction();
 		
-		return null;
+		Profissional profissional = null;
+		
+		tx.begin();
+		
+		Profissional existe = ent.find(Profissional.class, cpf);
+		
+		if (existe != null) {
+			profissional = existe;
+		}
+		
+		return profissional;
 	}
 
 	@Override
