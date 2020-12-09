@@ -11,41 +11,41 @@
 
 			<h:panelGrid columns="4" cellpadding="5">
 
-				<h:outputLabel for="nome" value="Nome:" />
-				<p:inputText id="nome" />
+				<h:outputLabel value="Nome:" />
+				<p:inputText value="#{PacienteBean.nomeTelaPaciente}" required="true" label="nome"/>
 
-				<h:outputLabel for="cpf" value="CPF:" />
-				<p:inputMask id="cpf" value="#{TelaCadastroPaciente.cpf}" mask="999.999.999-99"/>
+				<h:outputLabel value="CPF:" />
+				<p:inputMask value="#{PacienteBean.cpfTelaPaciente}" mask="999.999.999-99" required="true"/>
 
-				<h:outputLabel for="email" value="Email:" />
-				<p:inputText id="email" required="true" />
+				<h:outputLabel value="Email:" />
+				<p:inputText value="#{PacienteBean.emailTelaPaciente}" required="true" />
 
-				<h:outputLabel for="telefone" value="Telefone:" />
-				<p:inputMask id="telefone" value="#{TelaCadastroPaciente.telefone}" mask="(999) 99999-9999"/>
+				<h:outputLabel value="Telefone:" />
+				<p:inputMask value="#{PacienteBean.telefoneTelaPaciente}" mask="(999) 99999-9999" required="true"/>
 
-				<h:outputLabel for="sexo" value="Sexo:" />
-				<p:inputText id="sexo" required="true" />
+				<h:outputLabel value="Sexo:" />
+				<p:inputText value="#{PacienteBean.sexoTelaPaciente}" required="true" />
 
-				<h:outputLabel for="idade" value="Idade:" />
-				<p:inputText id="idade" required="true" />
+				<h:outputLabel value="Idade:" />
+				<p:inputText value="#{PacienteBean.idadeTelaPaciente}" required="true" />
 
-				<h:outputLabel for="peso" value="Peso:" />
-				<p:inputText id="peso" required="true" />
+				<h:outputLabel value="Peso:" />
+				<p:inputText value="#{PacienteBean.pesoTelaPaciente}" required="true" />
 
-				<h:outputLabel for="altura" value="Altura:" />
-				<p:inputText id="altura" required="true" />
+				<h:outputLabel value="Altura:" />
+				<p:inputText value="#{PacienteBean.alturaTelaPaciente}" required="true" />
 
-				<h:outputLabel for="numero" value="Numero:" />
-				<p:inputText id="numero" required="true" />
+				<h:outputLabel value="Numero:" />
+				<p:inputText value="#{PacienteBean.numeroTelaPaciente}" required="true" />
 
-				<h:outputLabel for="rua" value="Rua:" />
-				<p:inputText id="rua" required="true" />
+				<h:outputLabel value="Rua:" />
+				<p:inputText value="#{PacienteBean.ruaTelaPaciente}" required="true" />
 
-				<h:outputLabel for="bairro" value="Bairro:" />
-				<p:inputText id="bairro" required="true" />
+				<h:outputLabel value="Bairro:" />
+				<p:inputText value="#{PacienteBean.bairroTelaPaciente}" required="true" />
 
-				<h:outputLabel for="cep" value="CEP:" />
-				<p:inputMask id="cep" value="#{maskView.cep}" mask="99999-999"/>
+				<h:outputLabel value="CEP:" />
+				<p:inputMask value="#{PacienteBean.cepTelaPaciente}" mask="99999-999" required="true"/>
 
 			</h:panelGrid>
 
