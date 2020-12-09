@@ -12,7 +12,7 @@
 			<h:panelGrid columns="4" cellpadding="5">
 
 				<h:outputLabel value="Nome:" />
-				<p:inputText value="#{PacienteBean.nomeTelaPaciente}" required="true" label="nome"/>
+				<p:inputText value="#{PacienteBean.paciente.nome}" required="true" label="nome"/>
 
 				<h:outputLabel value="CPF:" />
 				<p:inputMask value="#{PacienteBean.cpfTelaPaciente}" mask="999.999.999-99" required="true"/>
