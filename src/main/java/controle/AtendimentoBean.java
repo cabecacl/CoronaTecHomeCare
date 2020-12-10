@@ -1,6 +1,8 @@
 package controle;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -13,15 +15,25 @@ import entidade.Profissional;
 @ManagedBean(name = "AtendimentoBean")
 @RequestScoped
 public class AtendimentoBean {
+
+	//Pesquisa do banco
+	private List<Profissional> 	listaProfissional;
+	private List<Paciente>	   	listaPaciente;
+	private List<Processo>		listaProcesso;
+	
+	//Objs selecionados
+	private Atendimento atendimento;
 	
 	private Profissional profissional;
 	private Paciente     paciente;
 	private Processo	 processo;
-
-	private Atendimento atendimento;
 	
 	
 	public AtendimentoBean() {
+		this.listaProfissional  = new ArrayList<Profissional>();
+		this.listaPaciente		= new ArrayList<Paciente>();
+		this.listaProcesso		= new ArrayList<Processo>();
+		
 		this.atendimento = new Atendimento();
 		this.atendimento.setDta(new Date());
 		

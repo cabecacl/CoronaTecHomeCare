@@ -23,60 +23,48 @@
 						<p:row>
 							<p:column colspan="8">Atendimento</p:column>
 						</p:row>
-						<p:row>
-							<p:column colspan="4">Profissional</p:column>
-							<p:column colspan="4">Cliente</p:column>
-						</p:row>
 				    </f:facet>
 				    	<p:row>
-							<p:column colspan="4">
-								<p:outputLabel id="lblRegProf"   value="Registro: #{AtendimentoBean.profissional.numeroRegistro}" />
+				    		<p:column colspan="1">
+				    			<p:outputLabel value="Profissional" for="itemProfissional"></p:outputLabel>
+				    		</p:column>
+							<p:column colspan="2">
+								<p:selectOneMenu id="itemProfissional" value="#{AtendimentoBean.profissional}" style="width: 90%;">
+									<f:selectItem itemLabel="Profissional" itemValue="itemProfissional" />
+						        </p:selectOneMenu>
 							</p:column>
+				    		<p:column colspan="1">
+				    			<p:outputLabel value="Paciente" for="itemPaciente"></p:outputLabel>
+				    		</p:column>
+							<p:column colspan="2">
+								<p:selectOneMenu id="itemPaciente" value="#{AtendimentoBean.paciente}" style="width: 90%;">
+									<f:selectItem itemLabel="Paciente" itemValue="itemPaciente" />
+						        </p:selectOneMenu>
+							</p:column>
+				    	</p:row>
+				    	<p:row>
 							<p:column colspan="1">
-								<p:outputLabel id="lblCpfPac" for="txtCpfPac" value="CPF " />
+								<p:outputLabel for="itemProcesso" value="Processo"/>
 							</p:column>
 							<p:column colspan="2">
-								<p:inputText id="txtCpfPac" value=""/><br/>
+								<p:selectOneMenu id="itemProcesso" value="#{AtendimentoBean.processo}" style="width: 90%;">
+								
+						            <f:selectItem itemLabel="Processo" itemValue="Processo" />
+						        </p:selectOneMenu>
 							</p:column>
-						</p:row>
-				    	<p:row>
-							<p:column colspan="4">
-								<p:outputLabel id="lblNomeProf"  value="Nome: #{AtendimentoBean.profissional.nome}"     />
-							</p:column>
-							<p:column colspan="4">
-								<p:outputLabel id="lblNomePac"   value="Nome: #{AtendimentoBean.paciente.nome}" />
-							</p:column>
-						</p:row>
-				    	<p:row>
-							<p:column colspan="4">
-								<p:outputLabel id="lblTipoProf"  value="Função: #{AtendimentoBean.profissional.tipoProfissional}" />
-							</p:column>
-							<p:column colspan="4">
-								<p:outputLabel id="lblPesoPac"   value="Peso: #{AtendimentoBean.paciente.peso}" />
-							</p:column>
-						</p:row>
-				    	<p:row>
-							<p:column colspan="1">
-								<p:outputLabel id="lblCidAtendimento" for="txtCidAtendimento" value="Cid:"/>
-							</p:column>
-							<p:column colspan="3">
-								<p:inputText id="txtCidAtendimento" value="#{AtendimentoBean.atendimento.cid}"/>
-							</p:column>
-							<p:column colspan="4" style="vertical-align: top;">
-								<p:outputLabel id="lblAlturaPac" value="Altura: #{AtendimentoBean.paciente.altura}" />
-							</p:column>
-						</p:row>
-						<p:row>
 							<p:column colspan="1" style="vertical-align: top;">
 								<p:outputLabel id="lblDtAtendimento" for="cldData"  value="Data: "/>
 							</p:column>
-							<p:column colspan="5">
+							<p:column colspan="2">
 								<p:calendar id="cldData" value="#{AtendimentoBean.atendimento.dta}" showOn="button" showTime="true" pattern="dd/MM/yyyy HH:mm"></p:calendar>
 							</p:column>
 						</p:row>
 						<p:row>
-							<p:column colspan="8">
-								<p:outputLabel id="lblProcesso" value="Processo: #{AtendimentoBean.processo.nome}" />
+							<p:column colspan="1">
+								<p:outputLabel id="lblCidAtendimento" for="txtCidAtendimento" value="Cid:"/>
+							</p:column>
+							<p:column colspan="2">
+								<p:inputText id="txtCidAtendimento" value="#{AtendimentoBean.atendimento.cid}"/>
 							</p:column>
 						</p:row>
 						<p:row>
@@ -120,7 +108,7 @@
 							</p:column>
 						</p:row>
 						<p:row>
-							<p:column colspan="8"> <p:button value="Submit" styleClass="panelGridCenter" /> </p:column>
+							<p:column colspan="8"> <p:button value="Salvar" styleClass="panelGridCenter" /> </p:column>
 						</p:row>
 				</p:panelGrid>
 				
