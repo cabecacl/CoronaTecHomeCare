@@ -43,8 +43,8 @@
 				 
 				 <p:menuitem value=" Tela inicial" url="telaPrincipal.xhtml"/>
 				 <p:menuitem value=" Atendimento"  url="telaAtendimento.xhtml"/>
-				 <p:menuitem value="Pesquisa Paciente" />    
-				 <p:menuitem value="Cadastra paciente"/>
+				 <p:menuitem value="Pesquisa Paciente"  />    
+				 <p:menuitem value="Cadastra paciente" url="telacadastro_paciente.xhtml"/>
 				  <p:menuitem value="Calculadora" url="calculadora.xhtml"/>
  				
  				</p:submenu>
@@ -58,14 +58,21 @@
 			    </ui:insert>
 			</td>
 			
-			<td>	
+			<td>
+				<div style=" width:180px; margin-bottom:40px; padding-left:20px;" >
+				<p:outputLabel value="Id"/><br/>	
+				<p:inplace>
+			    <p:inputText value="Pesquisa Aqui..."/>
+        		</p:inplace>
+        		</div>
+        		
 				<p:panelGrid columns="4" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4,ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" >
 
 				<p:outputLabel value="Profissional:" style=" font-size:23px"/>
-				<p:autoComplete  dropdown="true"  value="#{CadastroBean.nomeTela}" completeMethod="#{autoCompleteView.completeText}" style="horizontal-align:right:" /> 
+				<p:autoComplete  dropdown="true"  value="#{AtendimentoBean.profissional}" completeMethod="#{autoCompleteView.completeText}" style="horizontal-align:right:" /> 
 				
 				<p:outputLabel value="Paciente:" style=" font-size:23px" />
-				<p:autoComplete  dropdown="true"  value="#{Atendimento.paciente}" completeMethod="#{autoCompleteView.completeText}"/>
+				<p:autoComplete  dropdown="true"  value="#{AtendimentoBean.paciente}" completeMethod="#{autoCompleteView.completeText}"/>
 				
 				<p:outputLabel value="Data:" style=" font-size:23px" />
 				<p:datePicker  showIcon="true" />				
@@ -74,14 +81,14 @@
 				<p:datePicker  showIcon="true" />	
 				
 				<p:outputLabel value="Processo:" style=" font-size:23px" />
-				<p:autoComplete  dropdown="true"  value="#{AtendimentoBean.cid}" completeMethod="#{autoCompleteView.completeText}"/>
+				<p:autoComplete  dropdown="true"  value="#{AtendimentoBean.processo}" completeMethod="#{autoCompleteView.completeText}"/>
 				
 				<p:outputLabel value="CID:" style=" font-size:23px"/>
 				<p:inputText/>
 				</p:panelGrid>
 				
 				
-				 <p:commandButton value="PESQUISAR"  style="margin-left:50px; width:200px; margin-top:30px;" />
+				 <p:commandButton value="PESQUISAR"  style="margin-left:30px; width:200px; margin-top:30px;" />
 
 			</td>
 		</tr>
