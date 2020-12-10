@@ -106,9 +106,9 @@ public class AtendimentoDAOImplementacao implements AtendimentoDAO {
 		where += "and a.idatendimento = '" + atendimento.getIdatendimento() + "'";
 	} else {
 		if (atendimento.getProficional() != null && atendimento.getProficional().getId() > 0)
-			where += " and a.proficional.id = " + atendimento.getProficional() ;
+			where += " and a.proficional.id = " + atendimento.getProficional().getId() ;
 		if (atendimento.getPaciente() != null && atendimento.getPaciente().getIdpaciente() > 0) {
-			where += " and a.paciente.idpaciente = " + atendimento.getPaciente();
+			where += " and a.paciente.idpaciente = " + atendimento.getPaciente().getIdpaciente();
 		}
 	}
 	return null;
