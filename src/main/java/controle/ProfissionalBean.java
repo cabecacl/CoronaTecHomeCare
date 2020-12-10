@@ -8,12 +8,12 @@ import fachada.Fachada;
 
 @ManagedBean(name = "CadastroBean")
 @RequestScoped
-public class CadastroBean {
+public class ProfissionalBean {
 
 	private Profissional profissional;
 	private Fachada fachada;
 	
-	public CadastroBean() {
+	public ProfissionalBean() {
 		this.fachada = new Fachada();
 		this.profissional = new Profissional();
 	}
