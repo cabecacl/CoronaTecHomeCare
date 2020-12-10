@@ -1,5 +1,7 @@
 package entidade;
 
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +22,7 @@ public class Atendimento {
 	private int idatendimento;
 
 	@Column(name = "DTA", nullable = false)
-	private String dta;
+	private Date dta;
 
 	@Column(name = "CID", nullable = false)
 	private String cid;
@@ -62,11 +64,11 @@ public class Atendimento {
 		this.idatendimento = idatendimento;
 	}
 
-	public String getDta() {
+	public Date getDta() {
 		return dta;
 	}
 
-	public void setDta(String dta) {
+	public void setDta(Date dta) {
 		this.dta = dta;
 	}
 

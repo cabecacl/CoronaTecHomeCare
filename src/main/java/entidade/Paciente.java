@@ -156,5 +156,4 @@ public class Paciente {
 		this.cep = cep;
 	}
 	
-	
 }

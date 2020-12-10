@@ -1,0 +1,201 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
+
+	<style type="text/css">
+.white-button.ui-button.ui-state-default {
+	background-color: #ffffff;
+	color: #222222;
+	border-color: #d6d6d6;
+	/* with the exported variables from Nova and Luna Themes*/
+	border-color: var(- -input-border-color, #d6d6d6);
+}
+
+.white-button.ui-button.ui-state-default:enabled:hover, .white-button.ui-button.ui-state-default:focus
+	{
+	background-color: #f2f2f2;
+	border-color: #ccc;
+	color: #373a3c;
+	/* with the exported variables from Nova and Luna Themes*/
+	border-color: var(- -input-hover-border-color, #ccc);
+}
+
+.green-button.ui-button.ui-state-default {
+	background-color: #5cb85c;
+	border-color: #5cb85c;
+	color: #fff;
+}
+
+.green-button.ui-button.ui-state-default:enabled:hover, .green-button.ui-button.ui-state-default:focus
+	{
+	background-color: #4cae4c;
+	border-color: #5cb85c;
+}
+
+.red-button.ui-button.ui-state-default {
+	background-color: #d9534f;
+	border-color: #d9534f;
+	color: #fff;
+}
+
+.red-button.ui-button.ui-state-default:enabled:hover, .red-button.ui-button.ui-state-default:focus
+	{
+	background-color: #d43f3a;
+	border-color: #d9534f;
+}
+</style>
+</h:head>
+
+<h:body>
+
+
+
+	<style type="text/css">
+/** Demo **/
+.ui-outputlabel {
+	font-weight: bold;
+}
+
+.ui-orderlist .ui-orderlist-list {
+	height: auto;
+}
+</style>
+
+	<h:form>
+
+		<p:fieldset legend="Formulário de pesquisa" style="margin-bottom:20px">
+
+
+
+			<p:fieldset>
+				<h3>Pesquisa rápida</h3>
+				<hr></hr>
+
+				<div class="ui-g-12 ui-md-4">
+					<div class="ui-inputgroup">
+						<p:inputText placeholder="Id" />
+						<p:commandButton icon="pi pi-search" styleClass="white-button" />
+					</div>
+				</div>
+
+				<div class="ui-g-12 ui-md-4">
+					<div class="ui-inputgroup">
+						<p:inputText placeholder="CPF" />
+						<p:commandButton icon="pi pi-search" styleClass="white-button" />
+					</div>
+				</div>
+			</p:fieldset>
+
+
+
+			<br></br>
+
+
+
+			<p:fieldset>
+				<h3>Pesquisa padrão</h3>
+				<hr></hr>
+
+				<div class="ui-g ui-fluid">
+					<div class="ui-g-12 ui-md-4">
+						<div class="ui-inputgroup">
+							<span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
+							<p:inputText placeholder="Nome" />
+						</div>
+					</div>
+
+
+					<div class="ui-g-12 ui-md-4">
+						<div class="ui-inputgroup">
+							<h:outputLabel for="@next" value="Idade: " />
+							<p:spinner min="0" max="120" />
+						</div>
+					</div>
+
+					<div class="ui-g-12 ui-md-4">
+						<div class="ui-inputgroup">
+							<h:outputLabel for="@next" value="E-mail: " />
+							<p:inputText placeholder="E-mail" />
+
+						</div>
+					</div>
+
+					<div class="ui-g-12 ui-md-4">
+						<div class="ui-inputgroup">
+							<h:outputLabel for="@next" value="Telefone: " />
+							<p:inputText placeholder="99999-9999" />
+
+						</div>
+					</div>
+
+					<div class="ui-g-12 ui-md-4">
+						<div class="ui-inputgroup">
+							<p:outputLabel for="sexo" value="Sexo: " />
+							<p:selectOneMenu id="sexo">
+								<f:selectItem itemLabel="Selecione um" itemValue="#{null}"
+									noSelectionOption="true" />
+								<f:selectItem itemLabel="Masculino" itemValue="M" />
+								<f:selectItem itemLabel="Feminino" itemValue="F" />
+								<f:selectItem itemLabel="Gay" itemValue="G" />
+								<f:selectItem itemLabel="Não informar" itemValue="N" />
+							</p:selectOneMenu>
+						</div>
+					</div>
+
+				</div>
+
+				<p:button value="Buspaciente" />
+			</p:fieldset>
+
+		</p:fieldset>
+
+
+
+	</h:form>
+
+
+
+
+
+
+
+	<p:dataTable var="paciente" value="#{CadastroPaciente.pacientes}">
+		<p:column headerText="ID">
+			<h:outputText value="#{paciente.id}" />
+		</p:column>
+
+		<p:column headerText="PACIENTE">
+			<h:outputText value="#{paciente.nome}" />
+		</p:column>
+
+		<p:column headerText="CID">
+			<h:outputText value="#{atendimento.cid}" />
+		</p:column>
+
+		<p:column headerText="PROFISSIONAL">
+			<h:outputText value="#{profissional.nome}" />
+		</p:column>
+		
+		<p:column headerText="PROCESSO">
+			<h:outputText value="#{paciente.color}" />
+		</p:column>
+		
+		<p:column headerText="DATA">
+			<h:outputText value="#{atendimento.dta}" />
+		</p:column>
+		
+	</p:dataTable>
+
+
+
+
+
+
+
+</h:body>
+</html>

@@ -15,5 +15,7 @@ public interface ProcessoDAO {
 	public Processo pesquisarProcesso(String name);
 	
 	public List<Processo> pesquisarProcesso(Processo processo);
+	
+	public List<Processo> listarProcessos();
 
 }

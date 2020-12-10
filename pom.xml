@@ -32,11 +32,6 @@
 			<artifactId>jsf-impl</artifactId>
 			<version>2.2.13</version>
 		</dependency>
-		<dependency>
-			<groupId>org.primefaces</groupId>
-			<artifactId>primefaces</artifactId>
-			<version>7.0</version>
-		</dependency>
 		<!-- PROVIDER JPA(HIBERNATE) -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -49,6 +44,12 @@
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
 			<version>11.2.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>8.0</version>
 		</dependency>
 	</dependencies>
 
