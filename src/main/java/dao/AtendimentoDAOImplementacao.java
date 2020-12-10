@@ -77,13 +77,13 @@ public class AtendimentoDAOImplementacao implements AtendimentoDAO {
 	public Atendimento pesquisarAtendimento(int id) {
 		EntityManager ent = JpaUtil.getEntityManager();
 		EntityTransaction tx = ent.getTransaction();
-		
+
 		Atendimento atendimento = null;
-		
+
 		tx.begin();
-		
+
 		Atendimento existe = ent.find(Atendimento.class, id);
-		
+
 		if (existe != null) {
 			atendimento = existe;
 		}
@@ -94,7 +94,24 @@ public class AtendimentoDAOImplementacao implements AtendimentoDAO {
 	@Override
 	public List<Atendimento> pesquisarAtendimento(Atendimento atendimento) {
 
+		String sql = "from atendimento p where 1=1" + montarWhere(atendimento);
 		return null;
 	}
+
+	//String montarWhere
+	private String montarWhere(Atendimento atendimento) {
+	String where = "1";
+
+	if (atendimento.getIdatendimento() > 0) {
+		where += "and a.idatendimento = '" + atendimento.getIdatendimento() + "'";
+	} else {
+		if (atendimento.getProficional() != null && atendimento.getProficional().getId() > 0)
+			where += "and a.getproficional = '" + atendimento.getProficional() + "'";
+		if (atendimento.getPaciente() != null && atendimento.getPaciente().getIdpaciente() > 0) {
+			where += "and a.getpaciente like '%" + atendimento.getPaciente() + "%'";
+		}
+	}
+	return null;
+}
 
 }
