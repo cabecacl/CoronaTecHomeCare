@@ -9,26 +9,35 @@
 	<ui:define name="conteudo">
 		<p:panelGrid columns="4" style="width: 100%">
 			<p:outputLabel value="Nome" />
-			<p:inputText />
+			<p:inputText value="#{CadastroBean.profissional.nome}"
+				required="true" label="nome" />
 			<p:outputLabel value="CPF" />
-			<p:inputMask id="cpf" value="#{maskView.cpf}" mask="999.999.999-99" />
+			<p:inputMask id="cpf" mask="999.999.999-99"
+				value="#{CadastroBean.profissional.cpf}" required="true" label="cpf" />
 			<p:outputLabel value="Telefone" />
-			<p:inputMask id="phone" value="#{maskView.phone}"
-				mask="(99) 99999-9999" />
+			<p:inputMask id="phone" mask="(99) 99999-9999"
+				value="#{CadastroBean.profissional.telefone}" required="true"
+				label="Telefone" />
 			<p:outputLabel value="Área" />
-			<p:inputText />
+			<p:inputText value="#{CadastroBean.profissional.area}"
+				required="true" label="Area" />
+			<p:outputLabel value="E-mail" />
+			<p:inputText value="#{CadastroBean.profissional.email}"
+				required="true" label="Email" />
 			<p:outputLabel value="Especialização" />
-			<p:inputText />
+			<p:inputText value="#{CadastroBean.profissional.tipoProfissional}"
+				required="true" label="Especialização" />
 			<p:outputLabel value="Nº do Conselho" />
-			<p:inputText />
+			<p:inputText value="#{CadastroBean.profissional.numeroRegistro}"
+				required="true" label="NumRegistro" />
 			<p:outputLabel value="Senha" />
-			<p:inputText />
-			<p:outputLabel value="Confirmar Senha" />
-			<p:inputText />
-			<p:commandButton value="Reset" type="reset" />
-			<p:commandButton value="Cadastar"  update="@form" actionListener="#{buttonView.buttonAction}" />
+			<p:password value="#{CadastroBean.profissional.senha}"
+				required="true" label="senha" />
+			<p:commandButton value="Limpar" type="reset" />
+			<p:commandButton value="Cadastar" update="@form"
+				actionListener="#{CadastroBean.salvar}" />
 		</p:panelGrid>
-		
+
 
 
 	</ui:define>
