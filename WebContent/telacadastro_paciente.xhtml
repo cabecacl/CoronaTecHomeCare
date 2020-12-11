@@ -1,0 +1,57 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/templatePrincipal.xhtml">
+	<ui:define name="conteudo">
+		<h3>
+			<p:outputLabel value="Cadastro de Paciente" />
+
+			<h:panelGrid columns="4" cellpadding="5">
+
+				<h:outputLabel value="Nome:" />
+				<p:inputText value="#{PacienteBean.paciente.nome}" required="true" label="nome"/>
+
+				<h:outputLabel value="CPF:" />
+				<p:inputMask value="#{PacienteBean.cpfTelaPaciente}" mask="999.999.999-99" required="true"/>
+
+				<h:outputLabel value="Email:" />
+				<p:inputText value="#{PacienteBean.emailTelaPaciente}" required="true" />
+
+				<h:outputLabel value="Telefone:" />
+				<p:inputMask value="#{PacienteBean.telefoneTelaPaciente}" mask="(999) 99999-9999" required="true"/>
+
+				<h:outputLabel value="Sexo:" />
+				<p:inputText value="#{PacienteBean.sexoTelaPaciente}" required="true" />
+
+				<h:outputLabel value="Idade:" />
+				<p:inputText value="#{PacienteBean.idadeTelaPaciente}" required="true" />
+
+				<h:outputLabel value="Peso:" />
+				<p:inputText value="#{PacienteBean.pesoTelaPaciente}" required="true" />
+
+				<h:outputLabel value="Altura:" />
+				<p:inputText value="#{PacienteBean.alturaTelaPaciente}" required="true" />
+
+				<h:outputLabel value="Numero:" />
+				<p:inputText value="#{PacienteBean.numeroTelaPaciente}" required="true" />
+
+				<h:outputLabel value="Rua:" />
+				<p:inputText value="#{PacienteBean.ruaTelaPaciente}" required="true" />
+
+				<h:outputLabel value="Bairro:" />
+				<p:inputText value="#{PacienteBean.bairroTelaPaciente}" required="true" />
+
+				<h:outputLabel value="CEP:" />
+				<p:inputMask value="#{PacienteBean.cepTelaPaciente}" mask="99999-999" required="true"/>
+
+			</h:panelGrid>
+
+			<p:commandButton value="Cadastrar" />
+		</h3>
+	</ui:define>
+</ui:composition>
+
+</html>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 import entidade.Paciente;
 import util.JpaUtil;
@@ -84,13 +85,13 @@ public class PacienteDAOImplementacao implements PacienteDAO {
 	public Paciente pesquisarPaciente(String cpf) {
 		EntityManager ent = JpaUtil.getEntityManager();
 		EntityTransaction tx = ent.getTransaction();
-		
+
 		Paciente paciente = null;
-		
+
 		tx.begin();
-		
+
 		Paciente existe = ent.find(Paciente.class, cpf);
-		
+
 		if (existe != null) {
 			paciente = existe;
 		}
@@ -100,8 +101,24 @@ public class PacienteDAOImplementacao implements PacienteDAO {
 
 	@Override
 	public List<Paciente> pesquisarPaciente(Paciente paciente) {
-
+		
 		return null;
+	}
+
+	@Override
+	public List<Paciente> listarPacientes() {
+		
+		String sql = "from Paciente p";
+
+		EntityManager ent = JpaUtil.getEntityManager();
+
+		Query query = ent.createQuery(sql);
+
+		List<Paciente> listaPacientes = query.getResultList();
+
+		ent.close();
+
+		return listaPacientes;
 	}
 
 }

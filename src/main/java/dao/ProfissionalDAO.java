@@ -15,5 +15,7 @@ public interface ProfissionalDAO {
 	public Profissional pesquisarProfissional(String cpf);
 	
 	public List<Profissional> pesquisarProfissional(Profissional profissional);
+	
+	public List<Profissional> listarProfissionais();
 
 }

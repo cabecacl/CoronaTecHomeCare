@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/templatePrincipal.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panelGrid columns="4" style="width: 100%">
+			<p:outputLabel value="Nome" />
+			<p:inputText value="#{ProfissionalBean.profissional.nome}"
+				required="true" label="nome" />
+			<p:outputLabel value="CPF" />
+			<p:inputMask id="cpf" mask="999.999.999-99"
+				value="#{ProfissionalBean.profissional.cpf}" required="true" label="cpf" />
+			<p:outputLabel value="Telefone" />
+			<p:inputMask id="phone" mask="(99) 99999-9999"
+				value="#{ProfissionalBean.profissional.telefone}" required="true"
+				label="Telefone" />
+			<p:outputLabel value="Área" />
+			<p:inputText value="#{ProfissionalBean.profissional.area}"
+				required="true" label="Area" />
+			<p:outputLabel value="E-mail" />
+			<p:inputText value="#{ProfissionalBean.profissional.email}"
+				required="true" label="Email" />
+			<p:outputLabel value="Especialização" />
+			<p:inputText value="#{ProfissionalBean.profissional.tipoProfissional}"
+				required="true" label="Especialização" />
+			<p:outputLabel value="Nº do Conselho" />
+			<p:inputText value="#{ProfissionalBean.profissional.numeroRegistro}"
+				required="true" label="NumRegistro" />
+			<p:outputLabel value="Senha" />
+			<p:password value="#{ProfissionalBean.profissional.senha}"
+				required="true" label="senha" />
+			<p:commandButton value="Limpar" type="reset" />
+			<p:commandButton value="Cadastar" update="@form"
+				actionListener="#{ProfissionalBean.salvar}" />
+		</p:panelGrid>
+
+
+
+	</ui:define>
+</ui:composition>
+
+</html>

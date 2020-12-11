@@ -15,5 +15,7 @@ public interface PacienteDAO {
 	public Paciente pesquisarPaciente(String cpf);
 	
 	public List<Paciente> pesquisarPaciente(Paciente paciente);
+	
+	public List<Paciente> listarPacientes();
 
 }
