@@ -42,16 +42,16 @@ public class Atendimento {
 	@Column(name = "CONDUTA", nullable = false)
 	private String conduta;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "ID_PROFIS", referencedColumnName = "ID_PROFIS", nullable = false)
 	private Profissional proficional;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "ID_PACIENTE", referencedColumnName = "ID_PACIENTE", nullable = false)
 	private Paciente paciente;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "NOME", referencedColumnName = "NOME", nullable = false)
+	@OneToOne
+	@JoinColumn(name = "ID_PROCESSO", referencedColumnName = "NOME", nullable = false)
 	private Processo processo;
 
 	public int getIdatendimento() {

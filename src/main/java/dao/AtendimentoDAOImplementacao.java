@@ -19,7 +19,7 @@ public class AtendimentoDAOImplementacao implements AtendimentoDAO {
 
 		tx.begin();
 
-		ent.merge(atendimento);
+		ent.persist(atendimento);
 
 		tx.commit();
 		ent.close();
