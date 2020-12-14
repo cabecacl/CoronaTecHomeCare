@@ -1,0 +1,93 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/templatePrincipal.xhtml">
+	<ui:define name="cabecalho">
+		<h1 align="center">Pesquisar Atendimento</h1>
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<p:panelGrid columns="4"
+			columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4,ui-g-12 ui-md-2,ui-g-12 ui-md-4"
+			layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+
+			<p:outputLabel value="Profissional:" style=" font-size:23px" />
+			<p:selectOneMenu
+				value="#{AtendimentoBean.atendimento.proficional.id}">
+				<f:selectItem itemLabel="Selecione um ..." itemValue="" />
+				<f:selectItems value="#{AtendimentoBean.listaProfissional}"
+					var="profissional" itemLabel="#{profissional.nome}"
+					itemValue="#{profissional.id}">
+				</f:selectItems>
+			</p:selectOneMenu>
+
+			<p:outputLabel value="Paciente:" style=" font-size:23px" />
+			<p:selectOneMenu
+				value="#{AtendimentoBean.atendimento.paciente.idpaciente}">
+				<f:selectItem itemLabel="Selecione um ..." itemValue="" />
+				<f:selectItems value="#{AtendimentoBean.listaPaciente}"
+					var="paciente" itemLabel="#{paciente.nome}"
+					itemValue="#{paciente.idpaciente}">
+				</f:selectItems>
+			</p:selectOneMenu>
+
+			<p:outputLabel value="Data inicial:" style=" font-size:23px" />
+			<p:datePicker value="#{AtendimentoBean.dtainicio}" showIcon="true"
+				pattern="dd/MM/yyyy" />
+
+			<p:outputLabel value="Data final:" style=" font-size:23px" />
+			<p:datePicker value="#{AtendimentoBean.dtafim}" showIcon="true"
+				pattern="dd/MM/yyyy" />
+
+			<p:outputLabel value="Processo:" style=" font-size:23px" />
+			<p:autoComplete dropdown="true"
+				value="#{AtendimentoBean.atendimento.cid}" />
+
+			<p:outputLabel value="CID:" style=" font-size:23px" />
+			<p:inputText />
+		</p:panelGrid>
+
+
+		<p:commandButton value="PESQUISAR"
+			style="margin-left:50px; width:200px; margin-top:30px;"
+			actionListener="#{AtendimentoBean.pesquisar}" update="@form" />
+
+		<p:dataTable value="#{AtendimentoBean.listaAtendimento}"
+			var="atendimento">
+			<f:facet name="header">
+	            Resultado
+	        </f:facet>
+
+			<p:column headerText="Id">
+				<h:outputText value="#{atendimento.idatendimento}" />
+			</p:column>
+
+			<p:column headerText="Paciente">
+				<h:outputText value="#{atendimento.paciente.nome}" />
+			</p:column>
+
+			<p:column headerText="CID">
+				<h:outputText value="#{atendimento.cid}" />
+			</p:column>
+
+			<p:column headerText="Profissional">
+				<h:outputText value="#{atendimento.proficional.nome}" />
+			</p:column>
+			<p:column headerText="Processo">
+				<h:outputText value="#{atendimento.processo.nome}" />
+			</p:column>
+			<p:column headerText="Data">
+				<h:outputText value="#{atendimento.dta}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:outputText>
+			</p:column>
+
+		</p:dataTable>
+
+	</ui:define>
+</ui:composition>
+
+</html>

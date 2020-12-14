@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 import entidade.Atendimento;
 import util.JpaUtil;
@@ -96,8 +97,17 @@ public class AtendimentoDAOImplementacao implements AtendimentoDAO {
 	@Override
 	public List<Atendimento> pesquisarAtendimento(Atendimento atendimento,Date dtainicio, Date dtafim) {
 
-		String sql = "from atendimento p where 1=1 " + montarWhere(atendimento) + retornaFiltroData(dtainicio, dtafim);
-		return null;
+		String sql = "from Atendimento a where 1=1 " + montarWhere(atendimento) + retornaFiltroData(dtainicio, dtafim);
+		
+		EntityManager ent = JpaUtil.getEntityManager();
+
+		Query query = ent.createQuery(sql);
+
+		List<Atendimento> listaAtendimento = query.getResultList();
+
+		ent.close();
+
+		return listaAtendimento;
 	}
 
 	// String montarWhere
@@ -113,20 +123,21 @@ public class AtendimentoDAOImplementacao implements AtendimentoDAO {
 		if (atendimento.getPaciente() != null && atendimento.getPaciente().getIdpaciente() > 0) {
 			where += " and a.paciente.idpaciente = " + atendimento.getPaciente().getIdpaciente();
 			}
-		if (atendimento.getCid() != null && atendimento.getCid().isEmpty()) {
+		if (atendimento.getCid() != null && !atendimento.getCid().isEmpty()) {
 			where += " and a.Cid = " + atendimento.getCid();
 			}
-		if (atendimento.getProcesso() != null && atendimento.getProcesso().getNome().isEmpty()) {
+		if (atendimento.getProcesso() != null && atendimento.getProcesso().getNome() != null && 
+			!atendimento.getProcesso().getNome().isEmpty()) {
 			where += " and a.processo = " + atendimento.getProcesso();
-			}
+		}
 	}
 	return where;
 }
 
 	private String retornaFiltroData(Date dtainicio, Date dtafim) {
 		String filtroData = " ";
-		SimpleDateFormat fdtainicio = new SimpleDateFormat("dd-MM-yyyy");
-		SimpleDateFormat fdtafim = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat fdtainicio = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat fdtafim = new SimpleDateFormat("dd/MM/yyyy");
 		if(dtainicio != null && dtafim != null){
 		    filtroData += " and a.dta between  TO_DATE('" + fdtainicio.format(dtainicio) + "', 'DD/MM/YYYY') and "
 											 + " TO_DATE('" + fdtafim.format(dtafim) + "', 'DD/MM/YYYY') ";
