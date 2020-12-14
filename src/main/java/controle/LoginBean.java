@@ -12,6 +12,7 @@ import org.primefaces.PrimeFaces;
 import dao.ProfissionalDAO;
 import dao.ProfissionalDAOImplementacao;
 import entidade.Profissional;
+import fachada.Fachada;
 
 @ManagedBean(name = "LoginBean")
 @RequestScoped
@@ -20,10 +21,10 @@ public class LoginBean {
 	private String cpfTela;
 	private String senhaTela;
 
-	private ProfissionalDAO profDAO;
+	private Fachada proflogin;
 
 	public LoginBean() {
-		profDAO = new ProfissionalDAOImplementacao();
+		this.proflogin = new Fachada();
 	}
 
 	public String logar() {
@@ -35,7 +36,7 @@ public class LoginBean {
 		profPesquisa.setCpf(cpfTela);// cria pesquisa
 
 		// lista os proficionas para localisar
-		List<Profissional> listaBanco = this.profDAO.pesquisarProfissional(profPesquisa);
+		List<Profissional> listaBanco = this.proflogin.pesquisarProfissional(profPesquisa);
 
 		if (listaBanco != null && listaBanco.size() > 0) {
 			Profissional profBase = listaBanco.get(0);
@@ -44,12 +45,12 @@ public class LoginBean {
 				return "telaPrincipal.xhtml";
 			} else {
 				logado = false;
-				message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Errado", "Credenciais inválidas");
+				message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Errado", "Senha invalido");
 			}
 
 		} else {
 			logado = false;
-			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Errado", "Credenciais inválidas");
+			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Errado", "Usuário Não Cadastrado");
 		}
 
 		FacesContext.getCurrentInstance().addMessage(null, message);
@@ -73,5 +74,13 @@ public class LoginBean {
 
 	public void setSenhaTela(String senhaTela) {
 		this.senhaTela = senhaTela;
+	}
+
+	public Fachada getProflogin() {
+		return proflogin;
+	}
+
+	public void setProflogin(Fachada proflogin) {
+		this.proflogin = proflogin;
 	}
 }
