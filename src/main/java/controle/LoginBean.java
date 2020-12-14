@@ -22,9 +22,11 @@ public class LoginBean {
 	private String senhaTela;
 
 	private Fachada proflogin;
+	private ProfissionalDAO profissionalDAO;
 
 	public LoginBean() {
 		this.proflogin = new Fachada();
+		this.profissionalDAO = new ProfissionalDAOImplementacao();
 	}
 
 	public String logar() {
@@ -36,13 +38,15 @@ public class LoginBean {
 		profPesquisa.setCpf(cpfTela);// cria pesquisa
 
 		// lista os proficionas para localisar
-		List<Profissional> listaBanco = this.proflogin.pesquisarProfissional(profPesquisa);
+//		List<Profissional> listaBanco = this.proflogin.pesquisarProfissional(profPesquisa);
+		Profissional proBanco = this.profissionalDAO.pesquisarProfissional(cpfTela);
 
-		if (listaBanco != null && listaBanco.size() > 0) {
-			Profissional profBase = listaBanco.get(0);
+//		if (listaBanco != null && listaBanco.size() > 0) {
+		if (proBanco != null) {
+			Profissional profBase = proBanco;
 
 			if (profBase.getSenha().equals(senhaTela)) {
-				return "telaPrincipal.xhtml";
+				return "/paginas/telaPrincipal.xhtml?faces-redirect=true&amp;includeViewParams=true";
 			} else {
 				logado = false;
 				message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Errado", "Senha invalido");

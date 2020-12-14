@@ -79,20 +79,24 @@ public class ProfissionalDAOImplementacao implements ProfissionalDAO {
 
 	@Override
 	public Profissional pesquisarProfissional(String cpf) {
+		
+		String sql = "from Profissional p where p.cpf = ?";
+
 		EntityManager ent = JpaUtil.getEntityManager();
-		EntityTransaction tx = ent.getTransaction();
 
-		Profissional profissional = null;
+		Query query = ent.createQuery(sql);
+		query.setParameter(1, cpf);
 
-		tx.begin();
+		List<Profissional> lista = query.getResultList();
 
-		Profissional existe = ent.find(Profissional.class, cpf);
+		ent.close();
 
-		if (existe != null) {
-			profissional = existe;
+		if(lista != null && lista.size() > 0) {
+			return lista.get(0);
+		}else {
+			return null;
 		}
-
-		return profissional;
+		
 	}
 
 	@Override

@@ -83,20 +83,22 @@ public class PacienteDAOImplementacao implements PacienteDAO {
 
 	@Override
 	public Paciente pesquisarPaciente(String cpf) {
+		String sql = "from Paciente p where p.cpf = ?";
+
 		EntityManager ent = JpaUtil.getEntityManager();
-		EntityTransaction tx = ent.getTransaction();
 
-		Paciente paciente = null;
+		Query query = ent.createQuery(sql);
+		query.setParameter(1, cpf);
 
-		tx.begin();
+		List<Paciente> lista = query.getResultList();
 
-		Paciente existe = ent.find(Paciente.class, cpf);
-
-		if (existe != null) {
-			paciente = existe;
+		ent.close();
+		
+		if(lista != null && lista.size() > 0) {
+			return lista.get(0);
+		}else {
+			return null;
 		}
-
-		return paciente;
 	}
 
 	@Override
