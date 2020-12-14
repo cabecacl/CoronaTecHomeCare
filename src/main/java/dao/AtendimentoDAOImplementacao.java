@@ -1,5 +1,7 @@
 package dao;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -92,26 +94,45 @@ public class AtendimentoDAOImplementacao implements AtendimentoDAO {
 	}
 
 	@Override
-	public List<Atendimento> pesquisarAtendimento(Atendimento atendimento) {
+	public List<Atendimento> pesquisarAtendimento(Atendimento atendimento,Date dtainicio, Date dtafim) {
 
-		String sql = "from atendimento p where 1=1" + montarWhere(atendimento);
+		String sql = "from atendimento p where 1=1 " + montarWhere(atendimento) + retornaFiltroData(dtainicio, dtafim);
 		return null;
 	}
 
-	//String montarWhere
+	// String montarWhere
 	private String montarWhere(Atendimento atendimento) {
-	String where = "1";
+	String where = " ";
 
 	if (atendimento.getIdatendimento() > 0) {
-		where += "and a.idatendimento = '" + atendimento.getIdatendimento() + "'";
+		where += " and a.idatendimento = '" + atendimento.getIdatendimento() + "'";
 	} else {
-		if (atendimento.getProficional() != null && atendimento.getProficional().getId() > 0)
+		if (atendimento.getProficional() != null && atendimento.getProficional().getId() > 0) {
 			where += " and a.proficional.id = " + atendimento.getProficional().getId() ;
+			}
 		if (atendimento.getPaciente() != null && atendimento.getPaciente().getIdpaciente() > 0) {
 			where += " and a.paciente.idpaciente = " + atendimento.getPaciente().getIdpaciente();
-		}
+			}
+		if (atendimento.getCid() != null && atendimento.getCid().isEmpty()) {
+			where += " and a.Cid = " + atendimento.getCid();
+			}
+		if (atendimento.getProcesso() != null && atendimento.getProcesso().getNome().isEmpty()) {
+			where += " and a.processo = " + atendimento.getProcesso();
+			}
 	}
-	return null;
+	return where;
 }
 
+	private String retornaFiltroData(Date dtainicio, Date dtafim) {
+		String filtroData = " ";
+		SimpleDateFormat fdtainicio = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat fdtafim = new SimpleDateFormat("dd-MM-yyyy");
+		if(dtainicio != null && dtafim != null){
+		    filtroData += " and a.dta between  TO_DATE('" + fdtainicio.format(dtainicio) + "', 'DD/MM/YYYY') and "
+											 + " TO_DATE('" + fdtafim.format(dtafim) + "', 'DD/MM/YYYY') ";
+		}
+		return filtroData;
+	}
+	
+	
 }

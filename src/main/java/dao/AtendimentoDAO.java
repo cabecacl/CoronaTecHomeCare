@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.Date;
 import java.util.List;
 
 import entidade.Atendimento;
@@ -14,6 +15,6 @@ public interface AtendimentoDAO {
 	
 	public Atendimento pesquisarAtendimento(int id);
 	
-	public List<Atendimento> pesquisarAtendimento(Atendimento atendimento);
+	public List<Atendimento> pesquisarAtendimento(Atendimento atendimento, Date dtainicio, Date dtafim);
 
 }

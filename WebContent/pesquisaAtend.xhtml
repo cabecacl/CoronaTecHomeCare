@@ -5,6 +5,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	
 <h:head>
+	<meta charset="utf-8" http-equiv="Content-Language" content="pt-br" />
 	<title>Projeto Home Care</title>
 </h:head>
 <h:body>
@@ -62,33 +63,44 @@
 				<p:panelGrid columns="4" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4,ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" >
 
 				<p:outputLabel value="Profissional:" style=" font-size:23px"/>
-				<p:autoComplete  dropdown="true"  value="#{CadastroBean.nomeTela}" completeMethod="#{autoCompleteView.completeText}" style="horizontal-align:right:" /> 
+				<p:selectOneMenu value="#{AtendimentoBean.atendimento.proficional.id}" >
+					<f:selectItem itemLabel="Selecione um ..." itemValue="" />
+					<f:selectItems value="#{AtendimentoBean.listaProfissional}" var="profissional" 
+						itemLabel="#{profissional.nome}" itemValue="#{profissional.id}">
+					</f:selectItems>
+				</p:selectOneMenu> 
 				
 				<p:outputLabel value="Paciente:" style=" font-size:23px" />
-				<p:autoComplete  dropdown="true"  value="#{Atendimento.paciente}" completeMethod="#{autoCompleteView.completeText}"/>
+				<p:selectOneMenu value="#{AtendimentoBean.atendimento.paciente.idpaciente}" >
+					<f:selectItem itemLabel="Selecione um ..." itemValue="" />
+					<f:selectItems value="#{AtendimentoBean.listaPaciente}" var="paciente" 
+						itemLabel="#{paciente.nome}" itemValue="#{paciente.idpaciente}">
+					</f:selectItems>
+				</p:selectOneMenu>
 				
-				<p:outputLabel value="Data:" style=" font-size:23px" />
-				<p:datePicker  showIcon="true" />				
+				<p:outputLabel value="Data inicial:" style=" font-size:23px" />
+				<p:datePicker  value="#{AtendimentoBean.dtainicio}" showIcon="true" pattern = "dd/MM/yyyy" />				
 				
-				<p:outputLabel value="Data fim:" style=" font-size:23px" />
-				<p:datePicker  showIcon="true" />	
+				<p:outputLabel value="Data final:" style=" font-size:23px" />
+				<p:datePicker  value="#{AtendimentoBean.dtafim}" showIcon="true" pattern = "dd/MM/yyyy"/>	
 				
 				<p:outputLabel value="Processo:" style=" font-size:23px" />
-				<p:autoComplete  dropdown="true"  value="#{AtendimentoBean.cid}" completeMethod="#{autoCompleteView.completeText}"/>
+				<p:autoComplete  dropdown="true"  value="#{AtendimentoBean.atendimento.cid}" />
 				
 				<p:outputLabel value="CID:" style=" font-size:23px"/>
 				<p:inputText/>
 				</p:panelGrid>
 				
 				
-				 <p:commandButton value="PESQUISAR"  style="margin-left:50px; width:200px; margin-top:30px;" />
+				 <p:commandButton value="PESQUISAR"  style="margin-left:50px; width:200px; margin-top:30px;"
+				 	actionListener="#{AtendimentoBean.pesquisar}" update="@form" />
 
 			</td>
 		</tr>
 	</table>
 	
 	<div style="margin:30px; font-size:23px;">
-	<p:dataTable >
+	<p:dataTable value="#{AtendimentoBean.listaAtendimento}" var="atendimento">
         <f:facet name="header">
             Resultado
         </f:facet>
@@ -96,31 +108,27 @@
       
      
     <p:column headerText="Id">
-        <h:outputText value="#{AtendimentoBean.id}" />
+        <h:outputText value="#{atendimento.idatendimento}" />
     </p:column>
  
     <p:column headerText="Paciente">
-        <h:outputText value="#{AtendimentoBean.paciente}" />
+        <h:outputText value="#{atendimento.paciente.nome}" />
     </p:column>
  
     <p:column headerText="CID">
-        <h:outputText value="#{AtendimentoBean.cid}" />
+        <h:outputText value="#{atendimento.cid}" />
     </p:column>
  
     <p:column headerText="Profissional">
-        <h:outputText value="#{AtendimentoBean.profissional}" />
+        <h:outputText value="#{atendimento.proficional.nome}" />
     </p:column>
     <p:column headerText="Processo">
-        <h:outputText value="#{AtendimentoBean.processo}" />
+        <h:outputText value="#{atendimento.processo.nome}" />
     </p:column>
     <p:column headerText="Data">
-        <h:outputText value="#{AtendimentoBean.data}" />
+        <h:outputText value="#{atendimento.data}" />
     </p:column>
-        <p:column style="width:32px;text-align: center">
-             <p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" icon="pi pi-search" title="View">
-                <f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" />
-            </p:commandButton>
-        </p:column>
+        
     </p:dataTable>
 		</div>
 	</div>
