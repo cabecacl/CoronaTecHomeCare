@@ -5,53 +5,57 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="/templatePrincipal.xhtml">
+	<ui:define name="cabecalho">
+		<h1 align="center">Cadastro Paciente</h1>
+	</ui:define>
+
 	<ui:define name="conteudo">
-		<h3>
-			<p:outputLabel value="Cadastro de Paciente" />
+		<h:panelGrid columns="4" cellpadding="5">
 
-			<h:panelGrid columns="4" cellpadding="5">
+			<h:outputLabel value="Nome:" />
+			<p:inputText value="#{PacienteBean.paciente.nome}" required="true"
+				label="nome" />
 
-				<h:outputLabel value="Nome:" />
-				<p:inputText value="#{PacienteBean.paciente.nome}" required="true" label="nome"/>
+			<h:outputLabel value="CPF:" />
+			<p:inputMask value="#{PacienteBean.paciente.cpf}"
+				mask="999.999.999-99" required="true" />
 
-				<h:outputLabel value="CPF:" />
-				<p:inputMask value="#{PacienteBean.paciente.cpf}" mask="999.999.999-99" required="true"/>
+			<h:outputLabel value="Email:" />
+			<p:inputText value="#{PacienteBean.paciente.email}" required="true" />
 
-				<h:outputLabel value="Email:" />
-				<p:inputText value="#{PacienteBean.paciente.email}" required="true" />
+			<h:outputLabel value="Telefone:" />
+			<p:inputMask value="#{PacienteBean.paciente.telefone}"
+				mask="(999) 99999-9999" required="true" />
 
-				<h:outputLabel value="Telefone:" />
-				<p:inputMask value="#{PacienteBean.paciente.telefone}" mask="(999) 99999-9999" required="true"/>
+			<h:outputLabel value="Sexo:" />
+			<p:inputText value="#{PacienteBean.paciente.sexo}" required="true" />
 
-				<h:outputLabel value="Sexo:" />
-				<p:inputText value="#{PacienteBean.paciente.sexo}" required="true" />
+			<h:outputLabel value="Idade:" />
+			<p:inputText value="#{PacienteBean.paciente.idade}" required="true" />
 
-				<h:outputLabel value="Idade:" />
-				<p:inputText value="#{PacienteBean.paciente.idade}" required="true" />
+			<h:outputLabel value="Peso:" />
+			<p:inputText value="#{PacienteBean.paciente.peso}" required="true" />
 
-				<h:outputLabel value="Peso:" />
-				<p:inputText value="#{PacienteBean.paciente.peso}" required="true" />
+			<h:outputLabel value="Altura:" />
+			<p:inputText value="#{PacienteBean.paciente.altura}" required="true" />
 
-				<h:outputLabel value="Altura:" />
-				<p:inputText value="#{PacienteBean.paciente.altura}" required="true" />
+			<h:outputLabel value="Numero:" />
+			<p:inputText value="#{PacienteBean.paciente.numero}" required="true" />
 
-				<h:outputLabel value="Numero:" />
-				<p:inputText value="#{PacienteBean.paciente.numero}" required="true" />
+			<h:outputLabel value="Rua:" />
+			<p:inputText value="#{PacienteBean.paciente.rua}" required="true" />
 
-				<h:outputLabel value="Rua:" />
-				<p:inputText value="#{PacienteBean.paciente.rua}" required="true" />
+			<h:outputLabel value="Bairro:" />
+			<p:inputText value="#{PacienteBean.paciente.bairro}" required="true" />
 
-				<h:outputLabel value="Bairro:" />
-				<p:inputText value="#{PacienteBean.paciente.bairro}" required="true" />
+			<h:outputLabel value="CEP:" />
+			<p:inputMask value="#{PacienteBean.paciente.cep}" mask="99999-999"
+				required="true" />
 
-				<h:outputLabel value="CEP:" />
-				<p:inputMask value="#{PacienteBean.paciente.cep}" mask="99999-999" required="true" />
+		</h:panelGrid>
 
-			</h:panelGrid>
-
-			<p:commandButton value="Cadastrar" update="@form" 
-					actionListener="#{PacienteBean.salvar}" />
-		</h3>
+		<p:commandButton value="Cadastrar" update="@form"
+			actionListener="#{PacienteBean.salvar}" />
 	</ui:define>
 </ui:composition>
 

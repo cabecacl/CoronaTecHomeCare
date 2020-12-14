@@ -6,7 +6,7 @@ import javax.faces.bean.RequestScoped;
 import entidade.Profissional;
 import fachada.Fachada;
 
-@ManagedBean(name = "CadastroBean")
+@ManagedBean(name = "ProfissionalBean")
 @RequestScoped
 public class ProfissionalBean {
 

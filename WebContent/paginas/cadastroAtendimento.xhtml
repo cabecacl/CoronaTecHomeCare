@@ -6,21 +6,26 @@
 
 <h:head>
 	<title>Atendimento</title>
-	
+
 	<style>
-		.companyHeaderGrid.ui-panelgrid>*>tr,
-		.companyHeaderGrid.ui-panelgrid>*>tr>td {
-		    border: none;
-		}
-	</style>
+.companyHeaderGrid.ui-panelgrid>*>tr, .companyHeaderGrid.ui-panelgrid>*>tr>td
+	{
+	border: none;
+}
+</style>
 </h:head>
 <h:body>
 	<ui:composition template="/templatePrincipal.xhtml">
+
+		<ui:define name="cabecalho">
+			<h1 align="center">Cadastro Atendimento</h1>
+		</ui:define>
+
 		<ui:define name="conteudo">
-		
+
 			<p:growl id="growl" showDetail="true" sticky="true" />
-		
-				<p:fieldset style="background-color: #f5f5f5;">
+
+			<p:fieldset style="background-color: #f5f5f5;">
 				<p:panelGrid style="margin: auto;">
 					<f:facet name="header">
 						<p:row>
@@ -30,102 +35,128 @@
 							<p:column colspan="4">Profissional</p:column>
 							<p:column colspan="4">Cliente</p:column>
 						</p:row>
-				    </f:facet>
-				    	<p:row>
-							<p:column colspan="4">
-								<p:selectOneMenu value="#{AtendimentoBean.atendimento.proficional.id}" >
-									<f:selectItem itemLabel="Selecione um ..." itemValue="" />
-									<f:selectItems value="#{AtendimentoBean.listaProfissional}" var="profissional" 
-										itemLabel="#{profissional.nome}" itemValue="#{profissional.id}">
-									</f:selectItems>
-								</p:selectOneMenu>
-							</p:column>
-							<p:column colspan="4">
-								<p:selectOneMenu value="#{AtendimentoBean.atendimento.paciente.idpaciente}" >
-									<f:selectItem itemLabel="Selecione um ..." itemValue="" />
-									<f:selectItems value="#{AtendimentoBean.listaPaciente}" var="paciente" 
-										itemLabel="#{paciente.nome}" itemValue="#{paciente.idpaciente}">
-									</f:selectItems>
-								</p:selectOneMenu>
-							</p:column>
-						</p:row>
+					</f:facet>
+					<p:row>
+						<p:column colspan="4">
+							<p:selectOneMenu
+								value="#{AtendimentoBean.atendimento.proficional.id}">
+								<f:selectItem itemLabel="Selecione um ..." itemValue="" />
+								<f:selectItems value="#{AtendimentoBean.listaProfissional}"
+									var="profissional" itemLabel="#{profissional.nome}"
+									itemValue="#{profissional.id}">
+								</f:selectItems>
+							</p:selectOneMenu>
+						</p:column>
+						<p:column colspan="4">
+							<p:selectOneMenu
+								value="#{AtendimentoBean.atendimento.paciente.idpaciente}">
+								<f:selectItem itemLabel="Selecione um ..." itemValue="" />
+								<f:selectItems value="#{AtendimentoBean.listaPaciente}"
+									var="paciente" itemLabel="#{paciente.nome}"
+									itemValue="#{paciente.idpaciente}">
+								</f:selectItems>
+							</p:selectOneMenu>
+						</p:column>
+					</p:row>
 
-				    	<p:row>
-							<p:column colspan="1">
-								<p:outputLabel id="lblCidAtendimento" for="txtCidAtendimento" value="Cid:"/>
-							</p:column>
-							<p:column colspan="3">
-								<p:inputText id="txtCidAtendimento" value="#{AtendimentoBean.atendimento.cid}"/>
-							</p:column>
+					<p:row>
+						<p:column colspan="1">
+							<p:outputLabel id="lblCidAtendimento" for="txtCidAtendimento"
+								value="Cid:" />
+						</p:column>
+						<p:column colspan="3">
+							<p:inputText id="txtCidAtendimento"
+								value="#{AtendimentoBean.atendimento.cid}" />
+						</p:column>
 
-							<p:column colspan="1" style="vertical-align: top;">
-								<p:outputLabel id="lblDtAtendimento" for="cldData"  value="Data: "/>
-							</p:column>
-							<p:column colspan="3">
-								<p:calendar id="cldData" value="#{AtendimentoBean.atendimento.dta}" showOn="button" showTime="true" pattern="dd/MM/yyyy HH:mm"></p:calendar>
-							</p:column>
-						</p:row>
-						<p:row>
-							<p:column colspan="1">
-								<p:outputLabel value="Processo:" />
-							</p:column>
-							<p:column colspan="1">								
-								<p:selectOneMenu value="#{AtendimentoBean.atendimento.processo.nome}" >
-									<f:selectItem itemLabel="Selecione um ..." itemValue="" />
-									<f:selectItems value="#{AtendimentoBean.listaProcesso}" var="processo" 
-										itemLabel="#{processo.nome}" itemValue="#{processo.nome}">
-									</f:selectItems>
-								</p:selectOneMenu>
-							</p:column>
-						</p:row>
-						<p:row>
-							<p:column colspan="1">
-								<p:outputLabel id="lblAvalAtendimento" for="txtAvalAtendimento" value="avaliação"/>
-							</p:column>
-							<p:column colspan="7">
-								<p:inputTextarea rows="6" maxlength="3000" cols="60" id="txtAvalAtendimento" value="#{AtendimentoBean.atendimento.avaliacao}"/>
-							</p:column>
-						</p:row>
-						<p:row>
-							<p:column colspan="1">
-								<p:outputLabel   id="lblEvolAtendimento" for="txtEvolAtendimento" value="evolução"/>
-							</p:column>
-							<p:column colspan="7">
-								<p:inputTextarea rows="6" maxlength="3000" cols="60" id="txtEvolAtendimento" value="#{AtendimentoBean.atendimento.evolucao}"/>
-							</p:column>
-						</p:row>
-						<p:row>
-							<p:column colspan="1">
-								<p:outputLabel   id="lblPrescAtendimento" for="txtPrescAtendimento" value="prescrição"/>
-							</p:column>
-							<p:column colspan="7">
-								<p:inputTextarea rows="6" maxlength="3000" cols="60" id="txtPrescAtendimento" value="#{AtendimentoBean.atendimento.prescriao}"/>
-							</p:column>
-						</p:row>
-						<p:row>
-							<p:column colspan="1">
-								<p:outputLabel   id="lblObsAtendimento" for="txtObsAtendimento" value="observação"/>
-							</p:column>
-							<p:column colspan="7">
-								<p:inputTextarea rows="6" maxlength="3000" cols="60" id="txtObsAtendimento" value="#{AtendimentoBean.atendimento.obs}"/>
-							</p:column>
-						</p:row>
-						<p:row>
-							<p:column colspan="1">
-								<p:outputLabel   id="lblCondutaAtendimento" for="txtCondutaAtendimento" value="conduta"/>
-							</p:column>
-							<p:column colspan="7">
-								<p:inputTextarea rows="6" maxlength="3000" cols="60" id="txtCondutaAtendimento" value="#{AtendimentoBean.atendimento.conduta}"/>
-							</p:column>
-						</p:row>
-						<p:row>
-							<p:column colspan="8"> 
-								<p:commandButton value="SALVAR" actionListener="#{AtendimentoBean.salvar}" update="@form"/> 
-							</p:column>
-						</p:row>
+						<p:column colspan="1" style="vertical-align: top;">
+							<p:outputLabel id="lblDtAtendimento" for="cldData" value="Data: " />
+						</p:column>
+						<p:column colspan="3">
+							<p:calendar id="cldData"
+								value="#{AtendimentoBean.atendimento.dta}" showOn="button"
+								showTime="true" pattern="dd/MM/yyyy HH:mm"></p:calendar>
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="1">
+							<p:outputLabel value="Processo:" />
+						</p:column>
+						<p:column colspan="1">
+							<p:selectOneMenu
+								value="#{AtendimentoBean.atendimento.processo.nome}">
+								<f:selectItem itemLabel="Selecione um ..." itemValue="" />
+								<f:selectItems value="#{AtendimentoBean.listaProcesso}"
+									var="processo" itemLabel="#{processo.nome}"
+									itemValue="#{processo.nome}">
+								</f:selectItems>
+							</p:selectOneMenu>
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="1">
+							<p:outputLabel id="lblAvalAtendimento" for="txtAvalAtendimento"
+								value="avaliação" />
+						</p:column>
+						<p:column colspan="7">
+							<p:inputTextarea rows="6" maxlength="3000" cols="60"
+								id="txtAvalAtendimento"
+								value="#{AtendimentoBean.atendimento.avaliacao}" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="1">
+							<p:outputLabel id="lblEvolAtendimento" for="txtEvolAtendimento"
+								value="evolução" />
+						</p:column>
+						<p:column colspan="7">
+							<p:inputTextarea rows="6" maxlength="3000" cols="60"
+								id="txtEvolAtendimento"
+								value="#{AtendimentoBean.atendimento.evolucao}" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="1">
+							<p:outputLabel id="lblPrescAtendimento" for="txtPrescAtendimento"
+								value="prescrição" />
+						</p:column>
+						<p:column colspan="7">
+							<p:inputTextarea rows="6" maxlength="3000" cols="60"
+								id="txtPrescAtendimento"
+								value="#{AtendimentoBean.atendimento.prescriao}" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="1">
+							<p:outputLabel id="lblObsAtendimento" for="txtObsAtendimento"
+								value="observação" />
+						</p:column>
+						<p:column colspan="7">
+							<p:inputTextarea rows="6" maxlength="3000" cols="60"
+								id="txtObsAtendimento"
+								value="#{AtendimentoBean.atendimento.obs}" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="1">
+							<p:outputLabel id="lblCondutaAtendimento"
+								for="txtCondutaAtendimento" value="conduta" />
+						</p:column>
+						<p:column colspan="7">
+							<p:inputTextarea rows="6" maxlength="3000" cols="60"
+								id="txtCondutaAtendimento"
+								value="#{AtendimentoBean.atendimento.conduta}" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="8">
+							<p:commandButton value="SALVAR"
+								actionListener="#{AtendimentoBean.salvar}" update="@form" />
+						</p:column>
+					</p:row>
 				</p:panelGrid>
-				
-				</p:fieldset>
+
+			</p:fieldset>
 		</ui:define>
 	</ui:composition>
 </h:body>
