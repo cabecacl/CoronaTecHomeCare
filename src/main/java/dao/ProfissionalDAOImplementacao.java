@@ -79,7 +79,7 @@ public class ProfissionalDAOImplementacao implements ProfissionalDAO {
 
 	@Override
 	public Profissional pesquisarProfissional(String cpf) {
-		
+
 		String sql = "from Profissional p where p.cpf = ?";
 
 		EntityManager ent = JpaUtil.getEntityManager();
@@ -91,23 +91,49 @@ public class ProfissionalDAOImplementacao implements ProfissionalDAO {
 
 		ent.close();
 
-		if(lista != null && lista.size() > 0) {
+		if (lista != null && lista.size() > 0) {
 			return lista.get(0);
-		}else {
+		} else {
 			return null;
 		}
-		
+
 	}
 
 	@Override
 	public List<Profissional> pesquisarProfissional(Profissional profissional) {
+		String sql = "from Profissional p where 1=1 " + montarWhere(profissional);
+
+		EntityManager ent = JpaUtil.getEntityManager();
+
+		Query query = ent.createQuery(sql);
+
+		List<Profissional> listaProfissional = query.getResultList();
+
+		ent.close();
+
+		return listaProfissional;
+	}
+
+	// String montarWhere
+	private String montarWhere(Profissional profissional) {
+		String where = " ";
+
+		if(profissional.getNome() != null && !profissional.getNome().isEmpty()) {
+			where += " and p.nome LIKE '%" + profissional.getNome() + "%'";
+		}
+		if(profissional.getCpf() != null && !profissional.getCpf().isEmpty()) {
+			where += " and p.cpf = '" + profissional.getCpf() + "'";
+		}
+		if(profissional.getNumeroRegistro() > 0) {
+			where += " and p.numeroRegistro = " + profissional.getNumeroRegistro();
+		}
 		
-		return null;
+		return where;
 	}
 
 	@Override
 	public List<Profissional> listarProfissionais() {
-		
+
 		String sql = "from Profissional p";
 
 		EntityManager ent = JpaUtil.getEntityManager();

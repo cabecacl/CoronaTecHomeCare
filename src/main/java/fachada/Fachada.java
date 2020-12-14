@@ -253,23 +253,9 @@ public class Fachada {
 
 //Pesquisar Profissional
 
-	/*
-	 * public List<Atendimento> pesquisarAtendimento(Atendimento atendimento) {
-	 * String sql = "from atendimento p where 1=1" + montarWhere(atendimento);
-	 * return null; }
-	 * 
-	 * //String montarWhere private String montarWhere(Atendimento atendimento) {
-	 * String where = "";
-	 * 
-	 * if (atendimento.getIdatendimento() != null &&
-	 * !atendimento.getNome().isEmpty()) { where += "and p.cpf = " +
-	 * paciente.getCpf() + "'"; }else { if (paciente.getNome() != null &&
-	 * !paciente.getNome().isEmpty()) { where += "and p.nome like '%" +
-	 * paciente.getNome() + "%'"; } if(paciente.getIdade() > 0) { where +=
-	 * "and p.idade = " + paciente.getIdade(); } if (paciente.getSexo() != null &&
-	 * !paciente.getSexo().isEmpty()) { where += "and p.sexo like '%" +
-	 * paciente.getSexo() + "'"; } } return null; }
-	 */
+	public List<Profissional> pesquisarProfissional(Profissional profissional){
+		return this.profissionalDAO.pesquisarProfissional(profissional);
+	}
 
 //Inserir Processo	
 

@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/templatePrincipal.xhtml">
+	<ui:define name="cabecalho">
+		<h1 align="center">Pesquisar Profissional</h1>
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<p:panelGrid columns="4" style="width: 100%">
+			<p:outputLabel value="Nome" />
+			<p:inputText value="#{ProfissionalBean.profissional.nome}"
+				label="nome" />
+			<p:outputLabel value="CPF" />
+			<p:inputMask id="cpf" mask="999.999.999-99"
+				value="#{ProfissionalBean.profissional.cpf}" label="cpf" />
+			<p:outputLabel value="Nº do Conselho" />
+			<p:inputText value="#{ProfissionalBean.profissional.numeroRegistro}"
+				label="NumRegistro" />
+			<p:outputLabel />
+			<p:outputLabel />
+			<p:commandButton value="Limpar" type="reset" />
+			<p:commandButton value="Pesquisar" update="@form"
+				actionListener="#{ProfissionalBean.pesquisar}" />
+		</p:panelGrid>
+
+		<p:dataTable value="#{ProfissionalBean.listaProfissional}"
+			var="profissional">
+			<f:facet name="header">
+	            Resultado
+	        </f:facet>
+
+			<p:column headerText="CPF">
+				<h:outputText value="#{profissional.cpf}" />
+			</p:column>
+			<p:column headerText="Nome">
+				<h:outputText value="#{profissional.nome}" />
+			</p:column>
+			<p:column headerText="Telefone">
+				<h:outputText value="#{profissional.telefone}" />
+			</p:column>
+			<p:column headerText="Email">
+				<h:outputText value="#{profissional.email}" />
+			</p:column>
+			<p:column headerText="Nº Registro">
+				<h:outputText value="#{profissional.numeroRegistro}" />
+			</p:column>
+			<p:column headerText="Area">
+				<h:outputText value="#{profissional.area}" />
+			</p:column>
+
+		</p:dataTable>
+	</ui:define>
+</ui:composition>
+
+</html>
