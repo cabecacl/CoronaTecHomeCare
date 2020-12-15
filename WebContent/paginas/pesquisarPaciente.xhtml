@@ -1,4 +1,3 @@
-
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -7,51 +6,45 @@
 
 <ui:composition template="/templatePrincipal.xhtml">
 	<ui:define name="cabecalho">
-		<h1 align="center">Pesquisar Profissional</h1>
+		<h1 align="center">Pesquisar Paciente</h1>
 	</ui:define>
 
 	<ui:define name="conteudo">
 		<p:panelGrid columns="4" style="width: 100%">
 			<p:outputLabel value="Nome" />
-			<p:inputText value="#{ProfissionalBean.profissional.nome}"
+			<p:inputText value="#{PacienteBean.paciente.nome}"
 				label="nome" />
+				
 			<p:outputLabel value="CPF" />
 			<p:inputMask id="cpf" mask="999.999.999-99"
-				value="#{ProfissionalBean.profissional.cpf}" label="cpf" />
-			<p:outputLabel value="Nº do Conselho" />
-			<p:inputText value="#{ProfissionalBean.profissional.numeroRegistro}"
-				label="NumRegistro" />
-			<p:outputLabel />
+				value="#{PacienteBean.paciente.cpf}" label="cpf" />
+				
 			<p:outputLabel />
 			<p:commandButton value="Limpar" type="reset" />
+			<p:outputLabel />
 			<p:commandButton value="Pesquisar" update="@form"
-				actionListener="#{ProfissionalBean.pesquisar}" />
+				actionListener="#{PacienteBean.pesquisar}" />
 		</p:panelGrid>
 
-		<p:dataTable value="#{ProfissionalBean.listaProfissional}"
-			var="profissional">
+		<p:dataTable value="#{PacienteBean.listaPaciente}"
+			var="paciente">
 			<f:facet name="header">
 	            Resultado
 	        </f:facet>
 
 			<p:column headerText="CPF">
-				<h:outputText value="#{profissional.cpf}" />
+				<h:outputText value="#{paciente.cpf}" />
 			</p:column>
 			<p:column headerText="Nome">
-				<h:outputText value="#{profissional.nome}" />
+				<h:outputText value="#{paciente.nome}" />
 			</p:column>
 			<p:column headerText="Telefone">
-				<h:outputText value="#{profissional.telefone}" />
+				<h:outputText value="#{paciente.telefone}" />
 			</p:column>
 			<p:column headerText="Email">
-				<h:outputText value="#{profissional.email}" />
+				<h:outputText value="#{paciente.email}" />
 			</p:column>
-			<p:column headerText="Nº Registro">
-				<h:outputText value="#{profissional.numeroRegistro}" />
-			</p:column>
-			<p:column headerText="Area">
-				<h:outputText value="#{profissional.area}" />
-			</p:column>
+
 
 		</p:dataTable>
 	</ui:define>

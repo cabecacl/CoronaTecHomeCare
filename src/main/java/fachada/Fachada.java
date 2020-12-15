@@ -33,10 +33,10 @@ public class Fachada {
 	public boolean inserirPaciente(Paciente paciente) {
 
 		Paciente pacienteExiste = this.pacienteDAO.pesquisarPaciente(paciente.getCpf());
-		
-		if(pacienteExiste != null) {
+
+		if (pacienteExiste != null) {
 			return false;
-		}else {
+		} else {
 			return this.pacienteDAO.inserirPaciente(paciente);
 		}
 	}
@@ -96,10 +96,16 @@ public class Fachada {
 	}
 
 //Pesquisar Paciente
+//
+//	public List<Paciente> pesquisarPaciente(Paciente paciente) {
+//		String sql = "from Paciente p where 1=1" + montarWhere(paciente);
+//		return null;
+//	}
+
+// Pesquisar Paciente
 
 	public List<Paciente> pesquisarPaciente(Paciente paciente) {
-		String sql = "from Paciente p where 1=1" + montarWhere(paciente);
-		return null;
+		return this.pacienteDAO.pesquisarPaciente(paciente);
 	}
 
 //String montarWhere
@@ -253,7 +259,7 @@ public class Fachada {
 
 //Pesquisar Profissional
 
-	public List<Profissional> pesquisarProfissional(Profissional profissional){
+	public List<Profissional> pesquisarProfissional(Profissional profissional) {
 		return this.profissionalDAO.pesquisarProfissional(profissional);
 	}
 
@@ -316,21 +322,4 @@ public class Fachada {
 
 	}
 
-//Pesquisar Paciente
-
-	/*
-	 * public List<Paciente> pesquisarPaciente(Paciente paciente) { String sql =
-	 * "from Paciente p where 1=1" + montarWhere(paciente); return null; }
-	 * 
-	 * //String montarWhere private String montarWhere(Paciente paciente) { String
-	 * where = "";
-	 * 
-	 * if (paciente.getCpf() != null && !paciente.getNome().isEmpty()) { where +=
-	 * "and p.cpf = " + paciente.getCpf() + "'"; }else { if (paciente.getNome() !=
-	 * null && !paciente.getNome().isEmpty()) { where += "and p.nome like '%" +
-	 * paciente.getNome() + "%'"; } if(paciente.getIdade() > 0) { where +=
-	 * "and p.idade = " + paciente.getIdade(); } if (paciente.getSexo() != null &&
-	 * !paciente.getSexo().isEmpty()) { where += "and p.sexo like '%" +
-	 * paciente.getSexo() + "'"; } } return null; }
-	 */
 }

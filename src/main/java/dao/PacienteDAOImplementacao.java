@@ -7,6 +7,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import entidade.Paciente;
+import entidade.Profissional;
 import util.JpaUtil;
 
 public class PacienteDAOImplementacao implements PacienteDAO {
@@ -101,16 +102,16 @@ public class PacienteDAOImplementacao implements PacienteDAO {
 		}
 	}
 
+//	@Override
+//	public List<Paciente> pesquisarPaciente(Paciente paciente) {
+//		
+//		return null;
+//	}
+
 	@Override
 	public List<Paciente> pesquisarPaciente(Paciente paciente) {
 		
-		return null;
-	}
-
-	@Override
-	public List<Paciente> listarPacientes() {
-		
-		String sql = "from Paciente p";
+		String sql = "from Paciente p where 1=1" + montarWhere(paciente);
 
 		EntityManager ent = JpaUtil.getEntityManager();
 
@@ -123,4 +124,33 @@ public class PacienteDAOImplementacao implements PacienteDAO {
 		return listaPacientes;
 	}
 
+	// String montarWhere
+	private String montarWhere(Paciente paciente) {
+		String where = " ";
+
+		if(paciente.getNome() != null && !paciente.getNome().isEmpty()) {
+			where += " and p.nome LIKE '%" + paciente.getNome() + "%'";
+		}
+		if(paciente.getCpf() != null && !paciente.getCpf().isEmpty()) {
+			where += " and p.cpf = '" + paciente.getCpf() + "'";
+		}
+			
+		return where;
+	}
+	
+	@Override
+	public List<Paciente> listarPacientes() {
+
+		String sql = "from Profissional p";
+
+		EntityManager ent = JpaUtil.getEntityManager();
+
+		Query query = ent.createQuery(sql);
+
+		List<Paciente> listarPacientes = query.getResultList();
+
+		ent.close();
+
+		return listarPacientes;
+	}
 }

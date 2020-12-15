@@ -1,5 +1,8 @@
 package controle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -14,10 +17,12 @@ public class PacienteBean {
 	
 	private Paciente paciente;
 	private Fachada fachada;
+	private List<Paciente> listaPaciente;
 	
 	public PacienteBean() {
-		this.paciente = new Paciente();
 		this.fachada = new Fachada();
+		this.paciente = new Paciente();
+		this.listaPaciente = new ArrayList<Paciente>();
 	}
 	
 	public void salvar() {
@@ -32,6 +37,10 @@ public class PacienteBean {
 		}
 
 	}
+	
+	public void pesquisar() {
+		this.listaPaciente = fachada.pesquisarPaciente(this.paciente);
+	}
 
 	public Paciente getPaciente() {
 		return paciente;
@@ -39,6 +48,14 @@ public class PacienteBean {
 
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
+	}
+
+	public List<Paciente> getListaPaciente() {
+		return listaPaciente;
+	}
+
+	public void setListaPaciente(List<Paciente> listaPaciente) {
+		this.listaPaciente = listaPaciente;
 	}
 	
 
